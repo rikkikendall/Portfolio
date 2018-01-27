@@ -1,0 +1,65 @@
+/*
+ * @author Yuuta Rikki Kendall (yrk3)
+ */
+
+
+/* General Styles */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: azure;
+    text-align: left;
+}
+
+h1 {
+    color: darkblue;
+    text-align: center;
+}
+
+h2 {
+    color: black;
+    text-align: center;
+    background-color: aqua;
+    padding: 10px;
+}
+h4{
+    text-align: center;
+}
+
+p {
+    color: blue;
+    text-align: justify;
+}
+
+li {
+    color: saddlebrown;
+}
+
+/* Page styles */
+footer, header {
+    text-align: right;
+    padding: 5px;
+    background-color: aqua;
+}
+
+header {
+    border-bottom: 2px solid;
+    border-radius: 32px 32px 0 0;
+}
+
+footer {
+    border-top: 5px solid;
+}
+
+img{
+    display: block;
+    margin: 0 auto;
+}
+
+#content{
+    align-content: space-around;
+}
+
+.title {
+    text-align: center;
+    color: black;
+}

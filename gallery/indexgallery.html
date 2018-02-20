@@ -1,0 +1,48 @@
+
+<!-- Rikki Kendall yrk3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--    <link type="text/css" rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="style.css">
+    <title>Travel Photos</title>
+</head>
+
+<body>
+<h1 class="w3-center">Gallery of Wonders</h1>
+
+    <h4 class="w3-center">Check a Box Below to View a Category or Both.</h4>
+
+    
+<!-- Checkboxes-->
+<div class="container">
+	<form class="row checkbox mt-2">
+        <div class="form-check col-1 col-md-3">
+          <input class="form-check-input" type="checkbox" id="clickCuba" value="Cuba">
+          <label class="form-check-label">Cuba</label>
+        </div>
+        <div class="form-check col- col-md-3">
+          <input class="form-check-input" type="checkbox" id="clickJapan" value="Japan">
+            
+          <label class="form-check-label">
+              Japan</label>
+        </div>
+        <div class="col-6">
+          <button type="submit" class="btn btn-primary" id="clear">Clear</button>
+        </div>
+    </form>
+</div>
+
+<!-- Gallery-->
+<div class="container">
+	<div class="row" id="gallery"> </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="gallery2.js" async></script>
+</body>
+</html>

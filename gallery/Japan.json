@@ -1,0 +1,20 @@
+{  
+   "japan":[  
+      {  
+         "path":"images/Japan1.JPG",
+         "caption":"FIREWORKS!"
+      },
+      {  
+         "path":"images/Japan2.JPG",
+         "caption":"MORE FIREWORKS!"
+      },
+      {  
+         "path":"images/Japan3.JPG",
+         "caption":"LETS GO!"
+      },
+      {  
+         "path":"images/Japan4.JPG",
+         "caption":"WHAT UP"
+      }
+   ]
+}

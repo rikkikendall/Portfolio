@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<title>Gallery for Rikki Kendall</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--    W3 Schools Code Implemented-->
+<style>
+    body{
+    background-color: aquamarine;
+    }
+.mySlides {display:none}
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+</style>
+<body>
+
+
+<div class="w3-container">
+  <h2>Gallery of Wonders</h2>
+  <p>Below are two of the most interesting places I have ever been to. Click on the photo you would like to view below. </p>
+</div>
+    
+<div class="w3-content" style="max-width:1200px">
+    <div class="w3-display-container mySlides">
+      <img src="images/cuba1.jpg" onclick="filterSelection('people')" style="width:100%">
+      <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+        Havana, Cuba
+      </div>
+    </div>
+<div class="w3-display-container mySlides">
+  <img src="images/cuba2.jpg" onclick="filterSelection('architecture')"  style="width:100%">
+  <div class="w3-display-bottomright w3-large w3-container w3-padding-16 w3-black">
+    An incredible experience in Cuba
+  </div>
+</div>
+<div class="w3-display-container mySlides">
+  <img src="images/cuba3.jpg" onclick="filterSelection('nature')" style="width:100%">
+  <div class="w3-display-topleft w3-large w3-container w3-padding-16 w3-black">
+    Varadero
+  </div>
+</div>
+<div class="w3-display-container mySlides">
+  <img src="images/Japan2.jpg" style="width:100%">
+  <div class="w3-display-topright w3-large w3-container w3-padding-16 w3-black">
+    Konichiwa
+  </div>
+</div>
+<div class="w3-display-container mySlides">
+  <img src="images/Japan3.jpg" style="width:100%">
+  <div class="w3-display-bottomright w3-large w3-container w3-padding-16 w3-black">
+    Fireworks
+  </div>
+</div>
+<div class="w3-display-container mySlides">
+  <img src="images/Japan4.jpg" style="width:100%">
+  <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+    Japan!
+  </div>
+</div>
+</div>
+    
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> All</button>
+  <button class="btn" onclick="filterSelection('nature')"> Cuba</button>
+  <button class="btn" onclick="filterSelection('architecture')"> Japan</button>
+</div>
+
+    
+
+
+    
+<div class="row">
+  <div class="column cuba">
+    <div class="content">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="images/cuba1.jpg" alt = "People" style="width:100%" onclick="currentDiv(1)">
+    </div>
+  </div>
+  <div class="column japan">
+    <div class="content">
+    <img class="demo w3-opacity w3-hover-opacity-off" src="images/Japan2.jpg" alt = "Architecture" style="width:100%" onclick="currentDiv(2)">
+    </div>
+  </div>
+  <div class="column cuba">
+    <div class="content">
+    <img class="demo w3-opacity w3-hover-opacity-off" src="images/cuba2.jpg" alt = "Nature"  style="width:100%" onclick="currentDiv(3)">
+    </div>
+  </div>
+  
+  <div class="column japan">
+    <div class="content">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="images/Japan3.jpg" alt = "Nature"  style="width:100%" onclick="currentDiv(4)">
+    </div>
+  </div>
+
+  <div class="column cuba">
+    <div class="content">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="images/cuba3.jpg" alt = "Nature"  style="width:100%" onclick="currentDiv(5)">
+    </div>
+  </div>
+  <div class="column japan">
+    <div class="content">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="images/Japan4.jpg" alt = "People"  style="width:100%" onclick="currentDiv(6)">
+    </div>
+  </div>
+  </div>
+
+<button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+    
+</body>
+</html>

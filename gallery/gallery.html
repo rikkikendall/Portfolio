@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<title>Gallery for Rikki Kendall</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--    W3 Schools Code Implemented-->
+<style>
+    body{
+    background-color: aquamarine;
+    }
+.mySlides {display:none}
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+</style>
+<body>
+
+
+<div class="w3-container">
+  <h2>Gallery of Wonders</h2>
+  <p>Below are two of the most interesting places I have ever been to. Click on the photo you would like to view below. </p>
+</div>
+    
+    <div class="checkbox">
+        <form class="row checkbox mt-3">
+            <div class="form-check col-5 col-md-4">
+          <input class="form-check-input" type="checkbox" id="C" value="Cuba">
+          <label class="form-check-label" for="inlineCheckbox1"> Cuba </label>
+        </div>
+        <div class="form-check col-5 col-md-4">
+          <input class="form-check-input" type="checkbox" id="J" value="Japan">
+          <label class="form-check-label" for="inlineCheckbox2"> Japan </label>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" id="pick">Pick</button>
+          <button type="submit" class="btn btn-primary" id="clear">Clear</button>
+        </div>
+        </form>
+    </div>
+
+<div class="w3-content w3-display-container" style="max-width:800px">
+
+  <img class="mySlides" src="/images/cuba1.jpg" style="width:100%">
+  <img class="mySlides" src="/images/cuba2.jpg" style="width:100%">
+  <img class="mySlides" src="/images/cuba3.jpg" style="width:100%">
+      <img class="mySlides" src="/images/Japan2.JPG" style="width:100%">
+      <img class="mySlides" src="/images/Japan3.JPG" style="width:100%">
+      <img class="mySlides" src="/images/Japan4.JPG" style="width:100%">
+
+          <h3>
+          Click for enlarged photos of Cuba. 
+      </h3>
+  <div class="row-padding section">
+    <div class="w3-col s4">
+<!--
+              <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+    Choose between Cuba or Japan
+        </div>
+-->
+      <img class="demo w3-opacity w3-hover-opacity-off" src="/images/cuba1.jpg" style="width:100%" onclick="currentDiv(1)" id="C" value="Cuba">
+
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="/images/cuba2.jpg" style="width:100%" onclick="currentDiv(2)" id="C" value="Cuba">
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="/images/cuba3.jpg" style="width:100%" onclick="currentDiv(3)" id="C" value="Cuba">
+    </div>
+      <h3>
+          Click for enlarged photos of Japan. 
+      </h3>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="/images/Japan2.JPG" style="width:100%" onclick="currentDiv(4)" id="J" value="Japan">
+    </div>
+          <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="/images/Japan3.JPG" style="width:100%" onclick="currentDiv(5)" id="J" value="Japan">
+    </div>
+          <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="/images/Japan4.JPG" style="width:100%" onclick="currentDiv(6)" id="J" value="Japan">
+    </div>
+  </div>
+</div>
+
+<button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+    
+var otherCheckbox = document.querySelector('input[value="Cuba"]');
+var otherText = document.querySelector('input[value="Japan"]');
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+     dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " w3-white";
+}
+
+//function showDivs(n) {
+//  var i;
+//  var x = document.getElementsByClassName("mySlides2");
+//  var dots = document.getElementsByClassName("demo");
+//  if (n > x.length) {slideIndex = 1}    
+//  if (n < 1) {slideIndex = x.length}
+//  for (i = 0; i < x.length; i++) {
+//     x[i].style.display = "none";  
+//  }
+//  for (i = 0; i < dots.length; i++) {
+//     dots[i].className = dots[i].className.replace(" w3-white", "");
+//  }
+//  x[slideIndex-1].style.display = "block";  
+//  dots[slideIndex-1].className += " w3-white";
+//}
+    
+</script>
+
+</body>
+</html> 

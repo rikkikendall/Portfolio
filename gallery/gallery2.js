@@ -59,7 +59,7 @@ $(document).ready(function () {
 
 function createGallery() {
 	var checked = $(":checkbox:checked");
-	$.each(checked, (index, tag) {
+	$.each(checked, (index, tag) => {
 		console.log(tag.value);
     	checkedTags.push(tag.value);
   	});

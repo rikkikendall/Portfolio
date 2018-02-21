@@ -1,27 +1,27 @@
 {  
    "japan":[  
       {  
-         "path":"images/Japan1.JPG",
+         "path":"Japan1.JPG",
          "caption":"FIREWORKS!"
       },
       {  
-         "path":"images/Japan2.JPG",
+         "path":"Japan2.JPG",
          "caption":"MORE FIREWORKS!"
       },
       {  
-         "path":"images/Japan3.JPG",
+         "path":"Japan3.JPG",
          "caption":"LETS GO!"
       },
       {  
-         "path":"images/Japan4.JPG",
+         "path":"Japan4.JPG",
          "caption":"WHAT UP"
       },
              {  
-         "path":"images/Japan5.JPG",
+         "path":"Japan5.JPG",
          "caption":"WHAT UP"
       },
                     {  
-         "path":"images/cuba9.JPG",
+         "path":"cuba9.JPG",
          "caption":"WHAT UP"
       }
    ]

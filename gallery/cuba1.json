@@ -1,27 +1,27 @@
 {  
    "cuba":[  
       {  
-         "path":"cuba1.jpg",
+         "path":"images/cuba1.jpg",
          "caption":"Havana."
       },
       {  
-         "path":"cuba2.jpg",
+         "path":"images/cuba2.jpg",
          "caption":"Wall!"
       },
       {  
-         "path":"cuba3.jpg",
+         "path":"images/cuba3.jpg",
          "caption":"Varadero"
       },
       {  
-         "path":"cuba4.jpg",
+         "path":"images/cuba4.jpg",
          "caption":"Lets go."
       },
            {  
-         "path":"cuba6.jpg",
+         "path":"images/cuba6.jpg",
          "caption":"Lets go."
       },
                   {  
-         "path":"cuba7.jpg",
+         "path":"images/cuba7.jpg",
          "caption":"Lets go."
       }
    ]

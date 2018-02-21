@@ -113,23 +113,3 @@ function showDivs(n) {
         photos[slideIndex - 1].style.display = "block";  
     }
 }
-
-
-//Modal zoom
-function zoom(photo) {
-	console.log("Zoom clicked",photo);
-	var modal = document.getElementsByClassName("modal-content");
-    // var img = photo;
-    var modalImg = document.getElementById("cuba");
-    var caption = document.getElementById("caption");
-
-	modal.style.display = "block";
-    modalImg.src = photo.src;
-    caption.innerHTML = $(photo).attr('data-caption');
-    console.log(photo.src, $(photo).attr('data-caption'));
-    var span = document.getElementsByClassName("close")[0];
-    span.onclick = function () {
-        modal.style.display = "none";
-        console.log("close");
-    };
-}

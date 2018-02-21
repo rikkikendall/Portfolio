@@ -8,10 +8,10 @@ var slideIndex = 1;
 var modal;
 
 $(document).ready(function () {
-    $.getJSON('cuba1.json', function(havana) {
+    $.getJSON('cuba1.json', function(checked) {
     $('#clickCuba').click(function() {
         if(this.checked){
-            $.each(havana.cuba, function(index, tag) {
+            $.each(checked.cuba, function(index, tag) {
                 $('.container').append("<img class='cuba photos' src=" + tag.path + " alt=" + tag.caption + " />");
                 console.log("hi");
                 $("img").click(function() {
@@ -20,7 +20,7 @@ $(document).ready(function () {
                 });
             }
         else {
-                $.each(havana.cuba, function(index, tag) {
+                $.each(checked.cuba, function(index, tag) {
                     $('.cuba').remove();
                     $('.modal').css("display", "none");
                     $('button').css("display", "none");

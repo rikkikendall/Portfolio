@@ -40,7 +40,7 @@ $(document).ready(function () {
                 });
             }
         else {
-                $.each(havana.cuba, function(index, tag) {
+                $.each(checked.cuba, function(index, tag) {
                     $('.japan').remove();
                     $('.modal').css("display", "none");
                     $('button').css("display", "none");

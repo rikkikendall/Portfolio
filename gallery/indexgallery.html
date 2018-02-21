@@ -15,6 +15,7 @@
 <h1 class="w3-center">Gallery of Wonders</h1>
 
     <h4 class="w3-center">Check a Box Below to View a Category or Both.</h4>
+<div class="license"> <a href="https://creativecommons.org/licenses/by-nc/2.5/">Creative Commons Attribution-Noncommercial license.</a></div>
 
     
 <!-- Checkboxes-->
@@ -41,7 +42,22 @@
 	<div class="row" id="gallery"> </div>
 </div>
 
+<div class="leftandright">
+        <button class="prev">&lt;</button>
+        <button class="next">&gt;</button>
+</div><br>
 
+<div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01" src="" alt="">
+        <div id="caption"></div>
+</div>
+
+<!--
+    <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+-->
+    
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="gallery2.js" async></script>
 </body>

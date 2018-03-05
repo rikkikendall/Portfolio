@@ -21,10 +21,83 @@
     <title> Cards </title>
 </head>
 <body>
-<!--<div class="navbar"> Cards </div>-->
+<div class="navbar"> Cards </div>
 <div id="app">
-    
+    <h2 id="stacktitle">
+    {{stack.name}}
+    </h2>
+    <div id="menu">
+        <button type="button" class="btn btn-primary" onclick="addListDesp()">Add List</button>
+        <button type="button" class="btn btn-primary" onclick="getrid()">Delete List</button>
+        <button type="button" class="btn btn-primary" onclick="">Change Background</button>
+    </div>
+    <div id="addlist" class="modal-input">
+        <span onclick="addListClose()" class="close">&times;</span>
+        <div class="modal-input-content">
+            <div class="subhead">New List Name:</div>
+            <input id="listcontent" class="input-add"></input>
+            <div class="addlistbutton">
+                <button type="button" onclick="addList()" class="btn btn-info">Add</button>
+            </div>
+        </div>
+    </div>
 
+    <div id="removelist" class="modal-input">
+        <span onclick="closeRemoveList()" class="close">&times;</span>
+        <div class="modal-input-content">
+            <div class="subhead">List Name to Remove:</div>
+            <input id="listrmvalue" class="input-add"></input>
+            <div class="addlistbutton">
+                <button type="button" onclick="removeList()" class="btn btn-info">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="list" v-for="(item,index) in stack.lists">
+        <input class="input" v-model="item.title"></input>
+         <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button> 
+        <div class="card" v-for="(card,index2) in item.cards" v-on:click="displayMod(card,index,index2)">
+            {{card.title}}
+            <div v-if="card.shouldDisplay" v-bind:id="'stack'+index+'card'+index2" class="modal">
+                <span v-on:click.stop="closeabove(card)" v-bind:id="'span'+index+'card'+index2"class="close">&times;</span>
+                <div class="modal-content">
+                    <input class="inputhead" v-model="card.title"></input>
+                    <div class="subhead">Description:</div>
+                    <input class="input" v-model="card.description"></input>
+                    <div class="subhead">Deadline:</div>
+                    <input class="input" v-model="card.deadline"></input>
+                </div>
+            </div>
+        </div>
+
+        <div class="cardremove">
+            <button type="button" v-on:click="seeRemoveCard(index)" class="btn btn-info">Remove</button>
+        </div>
+        <div class="cardadd">
+            <button type="button" v-on:click="seeNewCard(index)" class="btn btn-info">Add</button>
+        </div>
+        <div v-bind:id="'addcard'+index" class="modal-input">
+            <span v-on:click="closethat(index)" class="close">&times;</span>
+            <div class="modal-input-content">
+                <div class="subhead">New Card Name:</div>
+                <input v-bind:id="'cardcontent'+index" class="input-add"></input>
+                <div class="addlistbutton">
+                    <button type="button" v-on:click="NewCard(item,index)" class="btn btn-info">Add</button>
+                </div>
+            </div>
+        </div>
+        <div v-bind:id="'removecard'+index" class="modal-input">
+            <span v-on:click="closeRemoveCard(index)" class="close">&times;</span>
+            <div class="modal-input-content">
+                <div class="subhead">Card Name to Remove:</div>
+                <input v-bind:id="'cardgrcontent'+index" class="input-add"></input>
+                <div class="addlistbutton">
+                    <button type="button" v-on:click="getridCard(item,index)" class="btn btn-info">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

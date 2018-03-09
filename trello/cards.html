@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title> Cards </title>
     <meta charset="windows-1252">
@@ -14,6 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <script src="cards.js" async></script>
     <!-- support for this page -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -26,9 +28,10 @@
     {{stack.name}}
     </h2>
     <div id="menu">
-        <button type="button" class="btn btn-primary" onclick="addListDesp()">Add List</button>
+        <button type="button" class="btn btn-primary" onclick="addListDisp()">Add List</button>
         <button type="button" class="btn btn-primary" onclick="getrid()">Delete List</button>
-        <button type="button" class="btn btn-primary" onclick="">Change Background</button>
+<!--        <button type="button" class="btn btn-primary" onclick="">Change Background</button>-->
+    <!--        <button type="button" class="btn btn-primary" onclick="">Sign In</button>-->
     </div>
     <div id="addlist" class="modal-input">
         <span onclick="addListClose()" class="close">&times;</span>

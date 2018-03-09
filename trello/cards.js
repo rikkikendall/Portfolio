@@ -1,3 +1,16 @@
+var config = {
+    apiKey: "AIzaSyBEPme4kqo6xH8RRDbr2dNofVLfA1a4g9M",
+    authDomain: "cs290-cards.firebaseapp.com",
+    databaseURL: "https://cs290-cards.firebaseio.com",
+    projectId: "cs290-cards",
+    storageBucket: "cs290-cards.appspot.com",
+    messagingSenderId: "736021692910"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+var rootRef = firebase.database().ref();
+var listRef = rootRef.child("lists").push();
+
 var data;
 
 var data = {
@@ -56,7 +69,12 @@ function addListClose() {
 
 function addList() {
     var content = document.getElementById('listcontent');
+    // MAKE SURE CONTENT IS THE ACTUAL TITLE
     var newList = {"title": content, "cards": []};
+    listRef.set(newList);
+    listRef.update({
+        path: listRef.ref.toString()
+    });
     var modal = document.getElementById('addList');
     if (content === "") {
         modal.style.display = 'none';
@@ -96,8 +114,9 @@ function closethat(index){
 function NewCard(list,index){
     var content = document.getElementById('cardcontent'+index).content;
     var newCard = {"title":content, "description":"", "deadline":"", shouldDisplay:false};
+    var cardRef = YOURLISTREF.ref("cards").push().set(newCard);
     var modal = document.getElementById('addcard'+index);
-    if(content==""){
+    if(content===""){
         alert("");
     }
     else{
@@ -121,7 +140,7 @@ function getridCard(list,index){
     var lists = data.stack.stack1.lists;
     var k;
     var modal = document.getElementById('getridcard')
-    if(content!=null){
+    if(content!==null){
         for(k=list.cards.length-1; k>=0; k--){
             if(lists[k].title==content){
             lists.cards.splice(k,1);
@@ -131,7 +150,7 @@ function getridCard(list,index){
     }
     else{
         modal.style.display = 'none';
-        alert("")
+        alert("");
     }
 }
 

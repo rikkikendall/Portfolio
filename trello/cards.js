@@ -31,21 +31,7 @@ var rootRef = database.ref();
 
 //var menu = document.getElementById("change_chart");
 //menu.addEventListener("change", options);
-//function optionsSelect(val) {
-//    addCard();
-//    if (val > 0) {
-//        console.log("HELLO"+val);
-//    }
-//    if (menu.value == '1') {
-//        //do something
-//        alert(1)
-//    } else if (menu.value == '2') {
-//    //do something
-//    alert(2)
-//  }  else if (menu.value == '3') {
-//    //do something
-//    alert(3)
-//  }
+
 
 
 //const app = new Vue({
@@ -69,19 +55,13 @@ var rootRef = database.ref();
         ChangeDueDate: false,
         CardClicked: null,
         ChangeCardDescription: false,
+        CardCategory: "",
+        Comment: null,
         
         startscreen: true,
         PictureName: '',
 
         hide: false,
-//        newInLi: '',
-        Categories: [
-            { text: 'Categories'},
-            { text: 'Work'},
-            { text: 'Play'},
-            { text: 'Important'},
-            { text: 'Personal'},
-        ]
     },
 //        firebase: {
 //        cards: stackRef,
@@ -106,6 +86,22 @@ var rootRef = database.ref();
         },
         CardDueDate: function() {
         	this.ChangeDueDate = false;
+        	this.addToDatabase("lists", this.lists);
+        },
+        optionsSelect: function(val) {
+        if (menu.value == '1') {
+            this.CardCategory = Categories;
+            this.addToDatabase("lists", this.lists);
+        } else if (menu.value == '2') {
+            this.CardCategory = To-Do;
+            this.addToDatabase("lists", this.lists);
+        }  else if (menu.value == '3') {
+            this.CardCategory = Personal;
+            this.addToDatabase("lists", this.lists);
+        }
+        },
+        CommentSomething: function() {
+        	this.Comment = null;
         	this.addToDatabase("lists", this.lists);
         },
 
@@ -133,7 +129,8 @@ var rootRef = database.ref();
             Time: Date.now(),
 //            Username: this.username,
 //            Email: this.email,
-            Category: "uncategorized",
+            Category: "Categories",
+            Comment: "",
             stack: []
           });
         //console.log("yeah");
@@ -151,9 +148,7 @@ var rootRef = database.ref();
         this.ListName = "";
         },
         addCard: function(card) {
-            if (!("stack" in card)) { 
-                    Vue.set(card, "stack", []); 
-                }
+                Vue.set(card, "stack", []); 
                 card.stack.push(this.todoText);
                 this.todoText = ""; // clear input
                 this.addToDatabase("stack", this.lists);

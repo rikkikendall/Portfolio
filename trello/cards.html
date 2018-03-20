@@ -92,7 +92,7 @@
     <!--  POP UP  -->
 <div class="modal" v-show="CardClicked">
     <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;" v-if="CardClicked">
-      <form method="post" action="/action_page_post.php">
+      <form>
         <div>
             <h2 class="Card Name" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.Name }}</h2>
             <input class="Card Name" v-show="ChangeCard" @keyup.enter="CardItself"v-model="CardClicked.Name">
@@ -100,6 +100,13 @@
               <input class="Card Description" v-show="ChangeCard" @keyup.enter="CardDescription"v-model="CardClicked.Description">
                 <h3 class="Card DueDate" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.DueDate }}</h3>
               <input class="Card Description" v-show="ChangeCard" @keyup.enter="CardDueDate"v-model="CardClicked.DueDate">
+                <select id="change_chart" v-show="ChangeCard" onchange="optionsSelect(this.value)" v-model="CardClicked.Category">
+                    <option value="1" selected>Select Option</option>
+                    <option value="2">To-Do</option>
+                    <option value="3">Personal</option>
+                </select>
+            <p class="Card Comment" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.Comment }}</p>
+            <input placeholder="Comment Something Seriously" v-model="CardClicked.Comment" @keyup.enter="CommentSomething(CardClicked.Comment)">
         </div>
       </form>
     </div>

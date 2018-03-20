@@ -1,53 +1,116 @@
-html, body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 16px;
-  margin-bottom: 16px;
+
+.body {
+    position: fixed;
+    pver-flow-y: scroll;
+    width: 100%;
+    top:-20px;
+    background-image: url(https://www.google.com/search?q=sasebo+sunset&safe=off&client=safari&rls=en&source=lnms&tbm=isch&sa=X&ved=0ahUKEwj0iPz75fbZAhVE22MKHXFzBM8Q_AUICigB&biw=1280&bih=739#imgrc=dVo6lqKXOZvVwM:);
+    background-size: cover;
+    -webkit-filter: blur(0px);
 }
 
+.list, .CreateList {
+  font-size: 12px;
+  width: 300px;
+  padding: 10px;
+  background-color: aliceblue;
+  border-radius: 5px;
+  display:inline-block;
+  vertical-align: top;
+  margin-right:10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.HorizontalList {
+  width: auto;
+  display:block;
+}
+
+.modal {
+  position: center;
 /*
-div#app {
+  right: 15px;
+  top: 15px;
+*/
+  color: #333;
+  cursor: pointer;
+  font-size: 18px;
+  height: 25px;
+  width: 25px;
+}
 
-  .cards {
-    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
-    max-width: 124px;
-    margin: 12px;
-    transition: .15s all ease-in-out;
-    &:hover {
-      transform: scale(1.1);
-    }
-    a {
-      text-decoration: none;
-      padding: 12px;
-      color: #03A9F4;
-      font-size: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      img {
-        height: 100px;
-      }
-      small {
-        font-size: 10px;
-        padding: 4px;
-      }
-    }
-  }
+.header{
+    color: #fff;
+}
+
+html {
+    
+}
+.screen {
+    min-height: 100%;
+    min-width: 100%;
+	position: absolute;
+	left: 3;
+	top: 3;
+}
+
+.container {
+    float: left;
+}
+
+.navbar {
+    margin: 0;
+    font-size: 100%;
+    width: auto;
+ }
+.nav-item label {
+    border: solid white 2px;
+    margin: 2px;
+}
+.nav-item label:hover {
+    color: white;
+}
 
 
-  .hotpink {
-    background: hotpink;
-  }
+/*modal css taken and modified from Vue tutorial on modals*/
+.modal-out {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+}
+/*positions the modal in the center of the page vertically*/
+.modal-mid {
+    display: table-cell;
+    vertical-align: middle;
+}
+/*styles the modal box*/
+.modal-in {
+    width: 40%;
+    height: auto;
+    margin: 0px auto;
+    padding: 20px 30px;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+}
 
-  .green {
-    background: green;
-  }
-
-  .box {
-    width: 100px;
+.inlist {
     height: 100px;
-    border: 1px solid rgba(0,0,0,.12);
-  }
-}*/
+/*    font-size: 10pt;*/
+    overflow: scroll;
+    padding: 10px;
+}
+
+.pics {
+    text-align: center;
+/*    align-content: center;*/
+    height: 250px;
+    overflow: scroll
+}

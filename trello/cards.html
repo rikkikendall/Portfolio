@@ -2,104 +2,109 @@
 <html lang="en">
 
 <head>
-    <title> Cards </title>
-    <meta charset="windows-1252">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- name -->
-    <meta name="author" content="Rikki Kendall">
-    <!-- cache control -->
-    <meta http-equiv="Cache-Control" content="no-cache" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <!-- script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-    <script src="cards.js" async></script>
-    <!-- support for this page -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="trello.css">
+        <title> Cards </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Rikki Kendall">
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+<!--
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> 
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+        <link rel="stylesheet" href="trello.css">
+
+<!--        <script src="cards.js" async></script>-->
 </head>
 <body>
-<div class="navbar"> Cards </div>
-<div id="app">
-    <h2 id="stacktitle">
-    {{stack.name}}
-    </h2>
-    <div id="menu">
-        <button type="button" class="btn btn-primary" onclick="addListDisp()">Add List</button>
-        <button type="button" class="btn btn-primary" onclick="getrid()">Delete List</button>
-<!--        <button type="button" class="btn btn-primary" onclick="">Change Background</button>-->
-    <!--        <button type="button" class="btn btn-primary" onclick="">Sign In</button>-->
-    </div>
-    <div id="addlist" class="modal-input">
-        <span onclick="addListClose()" class="close">&times;</span>
-        <div class="modal-input-content">
-            <div class="subhead">New List Name:</div>
-            <input id="listcontent" class="input-add"></input>
-            <div class="addlistbutton">
-                <button type="button" onclick="addList()" class="btn btn-info">Add</button>
-            </div>
-        </div>
+<div id="app" style="background-color: aqua">
+    <div id="nav">
+            <h1> GET YOUR LIFE TOGETHER </h1>
+        <h3> Instructions: </h3>
+        <p> 1. Type to Add List   2. Click to Add Card    3. Click on Card to Open Modal </p>
     </div>
 
-    <div id="removelist" class="modal-input">
-        <span onclick="closeRemoveList()" class="close">&times;</span>
-        <div class="modal-input-content">
-            <div class="subhead">List Name to Remove:</div>
-            <input id="listrmvalue" class="input-add"></input>
-            <div class="addlistbutton">
-                <button type="button" onclick="removeList()" class="btn btn-info">Remove</button>
-            </div>
-        </div>
-    </div>
-    <div class="list" v-for="(item,index) in stack.lists">
-        <input class="input" v-model="item.title"></input>
-         <button type="button" class="close" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button> 
-        <div class="card" v-for="(card,index2) in item.cards" v-on:click="displayMod(card,index,index2)">
-            {{card.title}}
-            <div v-if="card.shouldDisplay" v-bind:id="'stack'+index+'card'+index2" class="modal">
-                <span v-on:click.stop="closeabove(card)" v-bind:id="'span'+index+'card'+index2"class="close">&times;</span>
-                <div class="modal-content">
-                    <input class="inputhead" v-model="card.title"></input>
-                    <div class="subhead">Description:</div>
-                    <input class="input" v-model="card.description"></input>
-                    <div class="subhead">Deadline:</div>
-                    <input class="input" v-model="card.deadline"></input>
-                </div>
-            </div>
+<div id="login" v-show="!login">
+    StartScreen to Enter User 
+    <template>
+        <div class="start">
+            <label> Begin by Entering Your Information </label>
+                <form @submit.prevent="storeImage">
+                    <div class="form-group">
+                        <div class="form-group">
+                                <label>Name</label>
+                                    <input v-model="Name" type="name" class="form-control" id="Name" placeholder="Enter name">
+                            </div>
+                            <label>Email address</label>
+                            <input v-model="Email" type="email" class="form-control" id="Email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <p>
+                            <label for="imgTitle">Image</label>
+                        </p>
+                        <input type="file" id="files" name="files[]" />
+                    </div>
+                        <button type="submit" class="btn">Submit</button>
+                </form>
         </div>
 
-        <div class="cardremove">
-            <button type="button" v-on:click="seeRemoveCard(index)" class="btn btn-info">Remove</button>
+    </template>
+    </div>
+<!-- USER PROFILE PART and NAVBAR  -->
+<!--
+    <div class="navbar">
+         <form class="form-inline">
+        </form>
+    </div>
+-->
+
+
+<div class="container">
+                                    <!--    Create A List -->
+        <div class="CreateList">
+            <input class="card-input" placeholder="Create a list" v-model="ListName" @keyup.enter="newList">
         </div>
-        <div class="cardadd">
-            <button type="button" v-on:click="seeNewCard(index)" class="btn btn-info">Add</button>
+    
+        <div v-for="(list, listIndex) in lists" class="list" :class="{'HorizontalList': horizontal}" :key="list.id" :data-key="list.id">
+                    <!--   LIST TITLE     -->
+            <h2 @click="ChangeListName=list.id" v-show="ChangeListName!==list.id"> {{ list.title }} </h2>
+    
+            <input v-focus class="Change Name" v-show="ChangeListName===list.id" @keyup.enter="ListTitle" v-model="list.title">
+                <!--            FOR THE CARDS     -->
+<!--            <div class="cards-wrapper" v-show="!list.collapsed" :class="{'cards-wrapper-horiz':horizView}">-->
+                    <div class="Card Container":class="{'horizontalcard': horizontal}" v-for="(card, cardIndex) in list.cards" @click="PopUp(card)" :key="card.id">
+<!--            <div class="card" :class="{'horizontal card': horizontal}" v-for="(card, cardIndex) in list.cards" v-show="currentCategory == card.category || currentCategory == ''" @click="showCardModal(card)" :key="card.id" >-->
+                            <p>{{ card.Name }}</p>
+                    </div>
+              <div class="add-card" @click="See=list.id" v-show="See!==list.id"> 
+                  <button> Add A Card </button>
+              </div>
+            <input v-focus class="Change Card" v-show="See===list.id"  @keyup.enter="newCard(list)" v-model="list.ChangeText" >
         </div>
-        <div v-bind:id="'addcard'+index" class="modal-input">
-            <span v-on:click="closethat(index)" class="close">&times;</span>
-            <div class="modal-input-content">
-                <div class="subhead">New Card Name:</div>
-                <input v-bind:id="'cardcontent'+index" class="input-add"></input>
-                <div class="addlistbutton">
-                    <button type="button" v-on:click="NewCard(item,index)" class="btn btn-info">Add</button>
-                </div>
-            </div>
+</div>
+    
+    <!--  POP UP  -->
+<div class="modal" v-show="CardClicked">
+    <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;" v-if="CardClicked">
+      <form method="post" action="/action_page_post.php">
+        <div>
+            <h2 class="Card Name" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.Name }}</h2>
+            <input class="Card Name" v-show="ChangeCard" @keyup.enter="CardItself"v-model="CardClicked.Name">
+                <h3 class="Card Description" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.Description }}</h3>
+              <input class="Card Description" v-show="ChangeCard" @keyup.enter="CardDescription"v-model="CardClicked.Description">
+                <h3 class="Card DueDate" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.DueDate }}</h3>
+              <input class="Card Description" v-show="ChangeCard" @keyup.enter="CardDueDate"v-model="CardClicked.DueDate">
         </div>
-        <div v-bind:id="'removecard'+index" class="modal-input">
-            <span v-on:click="closeRemoveCard(index)" class="close">&times;</span>
-            <div class="modal-input-content">
-                <div class="subhead">Card Name to Remove:</div>
-                <input v-bind:id="'cardgrcontent'+index" class="input-add"></input>
-                <div class="addlistbutton">
-                    <button type="button" v-on:click="getridCard(item,index)" class="btn btn-info">Remove</button>
-                </div>
-            </div>
-        </div>
+      </form>
     </div>
 </div>
-</body>
+        </div>
+    <script src="cards.js"></script>
+    </body>
 </html>

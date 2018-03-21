@@ -1,0 +1,123 @@
+
+.body {
+    position: fixed;
+    pver-flow-y: scroll;
+    width: 100%;
+    top:-20px;
+    background-size: cover;
+    -webkit-filter: blur(0px);
+}
+
+.list, .CreateList {
+  font-size: 12px;
+  width: 300px;
+  padding: 10px;
+  background-color: aliceblue;
+  border-radius: 5px;
+  display:inline-block;
+  vertical-align: top;
+  margin-right:10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.HorizontalList {
+  width: auto;
+  display:block;
+}
+
+.modal {
+  background-color: rgb(47, 29, 29);
+  height: 50vw;
+  position: center;
+}
+
+.nav {
+  position: top;
+  font-family:monospace;
+}
+
+.modal2 {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 50vw;
+  position: center;
+}
+
+.login {
+    color: azure;
+}
+
+.header{
+    color: #fff;
+}
+
+html {
+    
+}
+.screen {
+    min-height: 100%;
+    min-width: 100%;
+	position: absolute;
+	left: 3;
+	top: 3;
+}
+
+.container {
+    float: left;
+}
+
+.navbar {
+    margin: 0;
+    font-size: 100%;
+    width: auto;
+ }
+.nav-item label {
+    border: solid white 2px;
+    margin: 2px;
+}
+.nav-item label:hover {
+    color: white;
+}
+
+
+/*modal css taken and modified from Vue tutorial on modals*/
+.modal-out {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+}
+/*positions the modal in the center of the page vertically*/
+.modal-mid {
+    display: table-cell;
+    vertical-align: middle;
+}
+/*styles the modal box*/
+.modal-in {
+    width: 40%;
+    height: auto;
+    margin: 0px auto;
+    padding: 20px 30px;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+}
+
+.inlist {
+    height: 100px;
+/*    font-size: 10pt;*/
+    overflow: scroll;
+    padding: 10px;
+}
+
+.pics {
+    text-align: center;
+/*    align-content: center;*/
+    height: 250px;
+    overflow: scroll
+}

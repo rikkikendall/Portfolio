@@ -36,16 +36,16 @@ var rootRef = database.ref();
 
 //const app = new Vue({
 
-    var app = new Vue({
+var app = new Vue({
     el: "#app",
     data: {
         cards: [],
         users: [],
         lists: [],
-        Username: false,
-        Name: "",
+        Username: "",
+        name: "",
         Description: "",
-        Email: "",
+        email: "",
         login: false,
         horizontal: false,
         See: null,
@@ -57,6 +57,8 @@ var rootRef = database.ref();
         ChangeCardDescription: false,
         CardCategory: "",
         Comment: null,
+        index: null,
+        cindex: null,
         
         startscreen: true,
         PictureName: '',
@@ -90,7 +92,7 @@ var rootRef = database.ref();
         },
         optionsSelect: function(val) {
         if (menu.value == '1') {
-            this.CardCategory = Categories;
+            this.CardCategory = SelectOption;
             this.addToDatabase("lists", this.lists);
         } else if (menu.value == '2') {
             this.CardCategory = To-Do;
@@ -100,13 +102,56 @@ var rootRef = database.ref();
             this.addToDatabase("lists", this.lists);
         }
         },
-        CommentSomething: function() {
-        	this.Comment = null;
-        	this.addToDatabase("lists", this.lists);
+        CommentSomething: function(card) {
+            card.Comments.push({
+            Who: this.name,
+            What: this.Comment,
+            });
+            this.Comment = ""; 
+            this.addToDatabase("lists", this.lists);
         },
-
-        showInput: function(input) {
-        input.isInputVisible = true;
+        Pic: function() {
+            var input = document.getElementById('files');
+            firebase.storage().ref().put(files[0]).then(function(snapshot) {
+                if (!("profile" in this.CardClicked)) {
+                    Vue.set(vm.currentCard, "profile", []);
+                }
+            firebase.storage().ref().getDownloadURL().then(function(url) { // URL URL URL
+            this.CardClicked.profile.push(url);
+            this.addToDatabase("lists", this.lists);
+            alert("Profile Picture Is In");
+                });
+            });
+        },
+        PastUser: function() {
+            if (this.users.indexOf(this.name) > -1) { // check if user exists
+                this.login = true;
+                return;
+            }
+        },
+        NewUser: function() {
+            this.users.push({
+            id: Date.now(),
+            Username: this.name,
+            Email: this.email
+        });
+             this.login = true;
+             this.addToDatabase("users", this.users);
+        },
+        Collapse: function(index) {
+            if ("collapsed" in this.lists[index]) {
+            this.lists[index].collapsed = !this.lists[index].collapsed; // invert
+                } 
+            else { Vue.set(this.lists[index], "collapsed", true);}
+            this.addToDatabase("lists", this.lists);
+         },
+        GetRidCard: function(index, cindex) {
+             this.lists[index].cards.splice(cindex, 1);
+             this.addToDatabase("lists", this.lists);
+        },
+        GetRidList: function(index) {
+            this.lists.splice(index, 1);
+            this.addToDatabase("lists", this.lists);
         },
 
 //        onEnterClicked: function() {
@@ -114,10 +159,6 @@ var rootRef = database.ref();
 //        },
         PopUp: function(card) {
       		this.CardClicked = card;
-    	},
-    	NewUser: function() {
-      			this.username = false;
-      			this.addToDatabase("users", this.users);
     	},
         newCard: function(list) {
           	list.cards.push({
@@ -129,13 +170,19 @@ var rootRef = database.ref();
             Time: Date.now(),
 //            Username: this.username,
 //            Email: this.email,
-            Category: "Categories",
+            Category: "",
             Comment: "",
-            stack: []
+            stack: [],
+            Comments: []
           });
         //console.log("yeah");
-          list.ChangeText = ""; // clear text
+          list.ChangeText = ""; 
           this.addToDatabase("lists", this.lists);
+        },
+        StackTodo: function(card) {
+            card.stack.push(this.todoText);
+            this.todoText = ""; 
+            this.addToDatabase("lists", this.lists);
         },
         newList: function() {
             this.lists.push({
@@ -150,17 +197,10 @@ var rootRef = database.ref();
         addCard: function(card) {
                 Vue.set(card, "stack", []); 
                 card.stack.push(this.todoText);
-                this.todoText = ""; // clear input
+                this.todoText = ""; 
                 this.addToDatabase("stack", this.lists);
-            }
-        },
-        storeImage: function() {
-            var input = document.getElementById('files');
-            if (input.files.length > 0) {
-          		Vue.set(this.currentCard, "images", []);
-            }
         }
-    
+    }
 });
 //app.$mount('#app');
 

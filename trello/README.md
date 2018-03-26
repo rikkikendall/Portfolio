@@ -2,7 +2,7 @@
 Yuuta Rikki Kendall (yrk3)
 
 Started Assignment: 2/28/2018
-Finished Assignment: 3/19/2018
+Finished Assignment: 3/26/2018
 Number of Hours: 26
 Students: Discussed With Cathy, W3Schools
 

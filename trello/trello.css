@@ -8,6 +8,60 @@
     -webkit-filter: blur(0px);
 }
 
+select option {
+    margin: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+select option[value="1"] { /* value not val */
+    background: rgba(100, 100, 100, 0.3);
+}
+
+select option[value="2"] { /* value not val */
+    background: rgba(200, 200, 200, 0.3);
+}
+
+.button {
+    background: #65a9d7;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: white;
+   font-size: 14px;
+   font-family: Georgia, serif;
+}
+
+/*
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropbtn {
+    background-color: blue;
+    color: white;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+*/
+.green option{
+        background-color:#0F0;
+}
+
+.blue option{
+        background-color:#00F;
+}
+
 .list, .CreateList {
   font-size: 12px;
   width: 300px;
@@ -65,8 +119,12 @@ html {
 .container {
     float: left;
 }
-
-.navbar {
+.login{
+    color: white;
+   font-size: 14px;
+   vertical-align: middle;
+}
+.nav-bar {
     margin: 0;
     font-size: 100%;
     width: auto;
@@ -78,7 +136,6 @@ html {
 .nav-item label:hover {
     color: white;
 }
-
 
 /*modal css taken and modified from Vue tutorial on modals*/
 .modal-out {
@@ -99,9 +156,9 @@ html {
 }
 /*styles the modal box*/
 .modal-in {
-    width: 40%;
+    width: 100%;
     height: auto;
-    margin: 0px auto;
+    margin: auto;
     padding: 20px 30px;
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);

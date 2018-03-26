@@ -7,8 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Rikki Kendall">
         <meta http-equiv="Cache-Control" content="no-cache" />
-        <meta http-equiv="Pragma" content="no-cache" />
-        <meta http-equiv="Expires" content="0" />
 <!--
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
@@ -18,17 +16,49 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> 
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-        <link rel="stylesheet" href="trello.css">
-
+    <link rel="stylesheet" href="trello.css">
 <!--        <script src="cards.js" async></script>-->
 </head>
 <body>
-<div id="app" style="background-color: aqua">
+<div id="app">
+    <div class="nav-bar">
+    <form name="Bckgrd"> Customize Your Page:
+        <select onchange="document.bgColor=this.options[this.selectedIndex].value">
+            <option value="FFFFFF">Choose Background </option>  
+            <option value="CCFFFF">Aqua Blue </option>
+            <option value="#58FA58">Green </option>
+            <option value="#0000FF">Blue </option>
+            <option value="FFFFFF">White </option>
+        </select>
+    </form>
+    <button class="button" @click="ChangeOrientation">Change Layout</button>
+    <button class="button"@click="ChangeUser=true"> Change User Info </button>
+        <div class="modal-in" v-show="ChangeUser">
+        <div class="change">
+         <h2> Change User Info </h2>
+        <label>Username</label>
+          <input class="input" v-model="name" placeholder="Name">
+                  <label>Email</label>
+          <input class="input" v-model="email" placeholder="Email">
+          <button class="btn" @click="ChangeUserInfo"> Change </button>
+        </div>
+      </div>
+    </div>
     <div class="nav">
             <h1> GET YOUR LIFE TOGETHER </h1>
+<!--
+        <div class="dropdown">
+            <button class="dropbtn">Add Deadlines</button>
+            <div class="dropdown-content">
+                <a href="https://calendar.google.com/calendar/embed?src=rmgmj4t9ikp8gfbpl5tf5pesj4%40group.calendar.google.com&ctz=America%2FNew_York">Google Calendar</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </div>
+-->
         <h3> Instructions: </h3>
         <p> 1. Type to Add List   2. Click to Add Card    3. Click on Card to Open Modal </p>
-      <div class="log-in-modal modal" v-show="!login">
+      <div class="modal" v-show="!login">
           <!--                <form @submit.prevent="Pic">-->
         <div class="login">
             <h2> Please Login</h2>
@@ -46,46 +76,49 @@
                 <button type="submit" class="button">Submit</button>-->
         </div>
       </div>
-    </div>
+  </div>
 <!-- USER PROFILE PART and NAVBAR  -->
 
-<div class="container">
-                                    <!--    Create A List -->
+    <div class="container">                    <!--    Create A List -->
+        <ul id="card-list" :style="{ 'display' : Orientation }">
         <div class="CreateList">
             <input class="card-input" placeholder="Create a list" v-model="ListName" @keyup.enter="newList">
         </div>
-    
+        
         <div v-for="(list, index) in lists" class="list" :class="{'HorizontalList': horizontal}" :key="list.id" :data-key="list.id">
                     <!--   LIST TITLE     -->
             <h2 @click="ChangeListName=list.id" v-show="ChangeListName!==list.id"> {{ list.title }} </h2>
                     <button class="button" @click.stop="GetRidList(index)"> Remove List </button>
     
-            <input v-focus class="Change Name" v-show="ChangeListName===list.id" @keyup.enter="ListTitle" v-model="list.title">
+            <input  class="Change Name" v-show="ChangeListName===list.id" @keyup.enter="ListTitle" v-model="list.title">
                 <!--            FOR THE CARDS     -->
                     <div class="Card Container":class="{'horizontalcard': horizontal}" v-for="(card, cardIndex) in list.cards" @click="PopUp(card)" :key="card.id">
                             <p>{{ card.Name }}</p>
                     </div>
-              <button class="add-card" @click="See=list.id" v-show="See!==list.id">  Add a Card </button>
+              <button class="button" @click="See=list.id"  v-show="See!==list.id">  Add a Card </button>
                 <button class="button" @click.stop="GetRidCard(index, cindex)"> Remove Card </button>
-            <input v-focus class="Change Card" v-show="See===list.id"  @keyup.enter="newCard(list)" v-model="list.ChangeText" >
-        </div>
-</div>
+            <input  class="Change Card" placeholder="New Card Name" v-show="See===list.id"  @keyup.enter="newCard(list)" v-model="list.ChangeText" >
+        </div>  
+        </ul>
+    </div>
     
     <!--  POP UP  -->
 <div class="modal-in" v-show="CardClicked">
     <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;" v-if="CardClicked">
       <form>
         <div>
-            <h2 class="Card Name" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.Name }}</h2>
+            <p>Click to Edit Details: </p>
+            <h2 class="Card Name" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.Name }} </h2>
             <input class="Card Name" v-show="ChangeCard" @keyup.enter="CardItself"v-model="CardClicked.Name">
                 <h3 class="Card Description" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.Description }}</h3>
-              <input class="Card Description" v-show="ChangeCard" @keyup.enter="CardDescription"v-model="CardClicked.Description">
-                <h3 class="Card DueDate" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.DueDate }}</h3>
-              <input class="Card Description" v-show="ChangeCard" @keyup.enter="CardDueDate" v-model="CardClicked.DueDate">
+              <input class="Card Description" placeholder="Add Description" v-show="ChangeCard" @keyup.enter="CardDescription" v-model="CardClicked.Description">
+                <h3 class="Card DueDate" @click="ChangeCard=true" v-show="!ChangeCard"> Due Date: {{ CardClicked.DueDate }}</h3>
+              <input class="Card DueDate" placeholder="Add Due Date" v-show="ChangeCard" @keyup.enter="CardDueDate" v-model="CardClicked.DueDate">
+               <h3 class="Card DueDate"> {{ this.value }}</h3>
                 <select id="change_chart" v-show="ChangeCard" onchange="optionsSelect(this.value)" v-model="CardClicked.Category">
-                    <option value="1" selected>Select Option</option>
-                    <option value="2">To-Do</option>
-                    <option value="3">Personal</option>
+                    <option value="Select Option" selected>Select Option</option>
+                    <option value="To-Do">To-Do</option>
+                    <option value="Personal">Personal</option>
                 </select>
 <!--
                 <div class="comments" v-if="CardClicked">
@@ -105,7 +138,7 @@
       </form>
     </div>
 </div>
-    
+<!--<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=rmgmj4t9ikp8gfbpl5tf5pesj4%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>-->
         </div>
     <script src="cards.js"></script>
     </body>

@@ -1,8 +1,4 @@
-Vue.directive('focus', {
-  componentUpdated: function (el) {
-    el.focus();
-  }
-});
+
 var config = {
     apiKey: "AIzaSyBEPme4kqo6xH8RRDbr2dNofVLfA1a4g9M",
     authDomain: "cs290-cards.firebaseapp.com",
@@ -32,8 +28,6 @@ var rootRef = database.ref();
 //var menu = document.getElementById("change_chart");
 //menu.addEventListener("change", options);
 
-
-
 //const app = new Vue({
 
 var app = new Vue({
@@ -51,19 +45,23 @@ var app = new Vue({
         See: null,
         ListName: "",
         ChangeListName: null,
+        ChangeUser: false,
         ChangeCard: false,
         ChangeDueDate: false,
         CardClicked: null,
         ChangeCardDescription: false,
         CardCategory: "",
+        Category: "",
         Comment: null,
         index: null,
         cindex: null,
-        
+        SelectedColor: "#0000FF",
+        colors: ["#fff", "#0404B4"],
+        clean: document.getElementById('clean'),
+        select: document.getElementById('select'),
         startscreen: true,
-        PictureName: '',
-
-        hide: false,
+        PictureName: "",
+        Orientation: "normal",
     },
 //        firebase: {
 //        cards: stackRef,
@@ -74,6 +72,9 @@ var app = new Vue({
     	addToDatabase: function(key, data){
             database.ref("/"+key).set(data);
         },
+//        onEnterClicked: function() {
+//            alert();
+//        },
     	ListTitle: function() {
         	this.ChangeListName = null;
         	this.addToDatabase("lists", this.lists);
@@ -90,15 +91,34 @@ var app = new Vue({
         	this.ChangeDueDate = false;
         	this.addToDatabase("lists", this.lists);
         },
+        changeBackground: function(color) {
+             document.body.style.background = color;
+        },
+        // BackgroundColor: function(val) {
+        // if (menu.value == '1') {
+        //     document.getElementById('optionID') = '#000';
+        // } else if (menu.value == '2') {
+        //     this.CardCategory = To-Do;
+        // }  else if (menu.value == '3') {
+        // }
+        // },
+        // BackgroundC: function() {
+        //     select.options[select.selectedIndex].style.backgroundColor = 'red';
+        // }
+        // clean: function() {
+        //     for(var i = 0; i < select.options.length; i++) {
+        //     select.options[i].style.backgroundColor = '';  
+        //     }
+        // }
         optionsSelect: function(val) {
         if (menu.value == '1') {
-            this.CardCategory = SelectOption;
+            this.Category = "";
             this.addToDatabase("lists", this.lists);
         } else if (menu.value == '2') {
-            this.CardCategory = To-Do;
+            this.Category = To-Do;
             this.addToDatabase("lists", this.lists);
         }  else if (menu.value == '3') {
-            this.CardCategory = Personal;
+            this.Category = Personal;
             this.addToDatabase("lists", this.lists);
         }
         },
@@ -138,13 +158,10 @@ var app = new Vue({
              this.login = true;
              this.addToDatabase("users", this.users);
         },
-        Collapse: function(index) {
-            if ("collapsed" in this.lists[index]) {
-            this.lists[index].collapsed = !this.lists[index].collapsed; // invert
-                } 
-            else { Vue.set(this.lists[index], "collapsed", true);}
-            this.addToDatabase("lists", this.lists);
-         },
+        ChangeUserInfo: function() {
+            this.ChangeUser = false;
+            this.addToDatabase("users", this.users);
+        },
         GetRidCard: function(index, cindex) {
              this.lists[index].cards.splice(cindex, 1);
              this.addToDatabase("lists", this.lists);
@@ -153,10 +170,16 @@ var app = new Vue({
             this.lists.splice(index, 1);
             this.addToDatabase("lists", this.lists);
         },
-
-//        onEnterClicked: function() {
-//            alert();
-//        },
+        ChangeOrientation: function() {
+            if(this.horizontal) {
+                this.Orientation = "normal";
+                this.horizontal = false;
+            }
+            else {
+                this.Orientation = "";
+                this.horizontal = true;
+            }
+        },
         PopUp: function(card) {
       		this.CardClicked = card;
     	},
@@ -165,8 +188,9 @@ var app = new Vue({
 //            id: Date().getDay() + "/" + Date().getMonth() + "/" + Date().getFullYear(),
             id: Date.now(),
             Name: list.ChangeText,
-            Description: "Click to edit description",
-            DueDate: "Click to add a due date",
+            Description: "",
+            DueDate: "",
+            Orientation: "",
             Time: Date.now(),
 //            Username: this.username,
 //            Email: this.email,

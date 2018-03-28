@@ -1,7 +1,6 @@
 
 .body {
     position: fixed;
-    pver-flow-y: scroll;
     width: 100%;
     top:-20px;
     background-size: cover;
@@ -86,19 +85,12 @@ select option[value="2"] { /* value not val */
 .modal {
   background-color: rgb(47, 29, 29);
   height: 50vw;
-  position: center;
 }
 
 .nav {
-  position: top;
   font-family:monospace;
 }
 
-.modal2 {
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 50vw;
-  position: center;
-}
 
 .login {
     color: azure;
@@ -115,8 +107,6 @@ html {
     min-height: 100%;
     min-width: 100%;
 	position: absolute;
-	left: 3;
-	top: 3;
 }
 
 .container {

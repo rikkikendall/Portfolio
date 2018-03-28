@@ -4,7 +4,7 @@ var config = {
     authDomain: "cs290-cards.firebaseapp.com",
     databaseURL: "https://cs290-cards.firebaseio.com",
     projectId: "cs290-cards",
-    storageBucket: "cs290-cards.appspot.com",
+    storageBucket: "gs://cs290-cards.appspot.com/",
     messagingSenderId: "736021692910"
 };
 firebase.initializeApp(config);
@@ -13,6 +13,7 @@ var rootRef = database.ref();
 var storageRef = firebase.storage().ref();
 var usersRef = database.ref('users');
 var activityRef = database.ref('Log');
+// var imgRef = database.ref('images');
 //var fb = firebase.initializeApp(config).database();
 ////var datab = fb.database();
 
@@ -42,16 +43,15 @@ var app = new Vue({
         ChangeUser: false,
         ChangeCard: false,
         ChangeDueDate: false,
+        ChangeCategory: false,
         CardClicked: null,
         ChangeCardDescription: false,
-        CardCategory: "",
-        Category: "",
+        Category: "Uncategorized",
         Comment: null,
         index: null,
         cindex: null,
         SelectedColor: "#0000FF",
         colors: ["#fff", "#0404B4"],
-        clean: document.getElementById('clean'),
         select: document.getElementById('select'),
         startscreen: true,
         PictureName: "",
@@ -60,6 +60,7 @@ var app = new Vue({
         curImage:'',
         text: "",
         Logs: [],
+        NewImage: null
     },
        firebase: {
        users: usersRef,
@@ -76,6 +77,10 @@ var app = new Vue({
         	this.ChangeListName = null;
         	this.addToDatabase("lists", this.lists);
         },
+        CardCategory: function() {
+            this.ChangeCategory = false;
+            this.addToDatabase("lists", this.lists);
+        },
         CardDescription: function() {
         	this.ChangeCardDescription = false;
         	this.addToDatabase("lists", this.lists);
@@ -89,8 +94,8 @@ var app = new Vue({
         	this.addToDatabase("lists", this.lists);
         },
         ActivityLog: function(message) {
-            var dt = new Date();
-            this.AddLog = dt.getHours() + ":" + dt.getMinutes() + " - " + message
+            var log = new Date();
+            this.AddLog = log.getHours() + ":" + log.getMinutes() + " - " + message;
             this.Logs.push(this.AddLog);
             activityRef.push({
                 activity: this.AddLog
@@ -123,6 +128,7 @@ var app = new Vue({
         }
         },
         newCard: function(list) {
+            var log = new Date();
             list.cards.push({
            // id:  Date.getDay() + "/" + Date().getMonth() + "/" + Date().getFullYear(),
             id: Date.now(),
@@ -130,16 +136,15 @@ var app = new Vue({
             Description: "",
             DueDate: "",
             Orientation: "",
+            time: log.getFullYear(),
             // Time: Date().getFullYear(),
-            // Username: this.username,
-//            Email: this.email,
             Category: "",
             Comments: [],
-            files: [],
+            images: [],
             stack: [],
-            // Comments: []
           });
         //console.log("yeah");
+        this.Time = log.getHours() + ":" + log.getMinutes();
         this.AddLog = "Card Added";
         this.ActivityLog(this.AddLog);
           list.ChangeText = ""; 
@@ -164,6 +169,11 @@ var app = new Vue({
             id: Date.now(),
             Username: this.name,
             Email: this.email,
+            // let file = document.getElementById('card-image-upload').files[0]
+            // if (file) {
+            //     await imgRef.child(file.name).put(file).then(function(snapshot) {
+            //     image: snapshot.downloadURL;
+            // });
             });
              this.login = true;
              this.addToDatabase("users", this.users);
@@ -218,6 +228,13 @@ var app = new Vue({
         this.ActivityLog(this.AddLog);
         this.addToDatabase("lists", this.lists);
         this.ListName = "";
+        },
+        uploadImage: function() {
+            let file = document.getElementById('card-image-upload').files[0];
+
+            firebase.storage().ref(file.name).put(file).then(function(snapshot) {
+                console.log(snapshot.downloadURL);
+            });
         },
     }
 });

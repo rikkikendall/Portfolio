@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-        <title> Cards </title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Rikki Kendall">
@@ -17,6 +16,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <link rel="stylesheet" href="trello.css">
+            <title> Cards </title>
 <!--        <script src="cards.js" async></script>-->
 </head>
 <body>
@@ -46,9 +46,8 @@
                             
              <img class = "modal-image" :src="user.image" alt="no image"> -->
 
-<!--                  <input id="card-image-upload" type="file" name="pic" accept="image/*" @change="storeImage"> -->
-<!--                 <input type="file" id="files" name="files[]" @change="storeImage">
-              <img v-show="CardClicked.image"> -->
+                 <input id="card-image-upload" type="file" name="pic" accept="image/*" @change="uploadImage">
+<!--               <img v-show="CardClicked.image"> --> 
         </div>
       </div>
     </div>
@@ -117,18 +116,22 @@
     
     <!--  POP UP  -->
 <div class="modal-in" v-show="CardClicked">
-    <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;" v-if="CardClicked">
+    <div data-role="popup" id="myPopup" class="ui-content" style="min-width:150px;" v-if="CardClicked">
       <form>
         <div>
-            <p>Click to Edit Details: </p>
-            <h2 class="Card Name" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.Name }} </h2>
-            <input class="Card Name" v-show="ChangeCard" @keyup.enter="CardItself"v-model="CardClicked.Name">
-            <p> {{ CardClicked.Time }} </p>
-                <h3 class="Card Description" @click="ChangeCard=true"v-show="!ChangeCard"> {{ CardClicked.Description }}</h3>
+            <p>Click Title to Edit Details: </p>
+            <h2 class="Card Name" @click="ChangeCard=true" v-show="!ChangeCard"> {{ CardClicked.Name }} </h2>
+            <input class="Card Name" v-show="ChangeCard" @keyup.enter="CardItself" v-model="CardClicked.Name">
+            <p> Created: {{ CardClicked.time }} </p>
+                <h3 class="Card Description" @click="ChangeCard=true" v-show="!ChangeCard"> {{ CardClicked.Description }}</h3>
               <input class="Card Description" placeholder="Add Description" v-show="ChangeCard" @keyup.enter="CardDescription" v-model="CardClicked.Description">
+
+
                 <h3 class="Card DueDate" @click="ChangeCard=true" v-show="!ChangeCard"> Due Date: {{ CardClicked.DueDate }}</h3>
               <input class="Card DueDate" placeholder="Add Due Date" v-show="ChangeCard" @keyup.enter="CardDueDate" v-model="CardClicked.DueDate">
-               <h3 class="Card DueDate"> {{ this.value }}</h3>
+
+            <input class="Card Category" placeholder="Add Category" v-show="ChangeCard" @keyup.enter="NewCategory" v-model="CardClicked.Category">
+               <h3 class="Card Category"> Category: </h3> <p>{{ CardClicked.Category }}</p>
 
                 <h3>Add Some Todos Below: </h3>
                 <div v-for="(StackTodo, index) in CardClicked.stack">
@@ -144,19 +147,14 @@
               <div class="comments" v-if="CardClicked">
                   <h3>Comments</h3>
                   <div v-for="(Comments, index) in CardClicked.Comments">
-                    <p>
-                      <strong>{{ Comments.Who }}:</strong> {{ Comments.What }}
-                    </p>
+                    <p>{{ Comments.Who }}: {{ Comments.What }}</p>
                   </div>
                   <input placeholder="Add a comment" v-model="Comment" @keyup.enter="CommentSomething(CardClicked)">
                 </div>
 
-<!--             <p class="Card Comment" @click="ChangeCard=true" v-show="!ChangeCard"> {{ CardClicked.Comments.What }}</p>
-            <input placeholder="Comment Something" v-model="CardClicked.Comments" @keyup.enter="CommentSomething(card)"> -->
-            <!-- IMAGES BABY -->
-<!--                         <input type="file" id="files" name="files[]" @change="storeImage"> -->
-<!--                 <input id="card-image-upload" type="file" name="pic" accept="image/*" > -->
-<!--               <img v-for="image in CardClicked.profile" :src="image" alt="image"> -->
+                 <input id="card-image-upload" type="file" name="pic" accept="image/*" @change="uploadImage">
+<!--                  <img v-for="image in CardClicked.images" :src="image" alt="image"> -->
+
       </form>
     </div>
 </div>

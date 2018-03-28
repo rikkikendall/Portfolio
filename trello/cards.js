@@ -158,12 +158,6 @@ var app = new Vue({
             this.Comment = ""; 
             this.addToDatabase("lists", this.lists);
         },
-        PastUser: function() {
-            if (this.users.indexOf(this.name) > -1) { // check if user exists
-                this.login = true;
-                return;
-            }
-        },
         NewUser: function() {
             this.users.push({
             id: Date.now(),

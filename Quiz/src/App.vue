@@ -15,6 +15,7 @@
             <button class="duke_questions" v-on:click="index=0; Show=false">
                 Duke Questions
             </button>
+<!--             <NewBookForm v-if="DukeQuiz" :quiz=""> </NewBookForm> -->
             <button class="math_questions" v-on:click="index=1; Show=false">
                 Math Questions
             </button>
@@ -23,17 +24,18 @@
             </button>
         </div>
     </div>
-    <div class="page-header" v-if="!Show">
-        <Quiz   :quiz="AllQs[index].quiz"
+    <div class="page-header" v-if="!Show" v-bind:style="{ color: '#3B3EF7', fontSize: '20px', borderColor: '#5BC0EB'}">
+
+        <NewBookForm   :quiz="AllQs[index].NewBookForm"
                 :questions="AllQs[index].questions"
                 :choices="AllQs[index].questions[qindex].choices"
                 :index="index"
                 :qindex="qindex"
                 :Show="Show">
-        </Quiz>
-<!--                 <Quiz
+        </NewBookForm>
+<!--                 <NewBookForm
                 :questions="[index].questions">
-        </Quiz> -->
+        </NewBookForm> -->
         <p> YES! 
         </p>
     </div>
@@ -41,9 +43,9 @@
 </template>
 <script>
 
-import Quiz from './components/NewBookForm.vue'
+import NewBookForm from './components/NewBookForm.vue'
 import questions from './data/duke_questions.json'
-// import Style from './css/quiz.css';
+// import Style from './css/NewBookForm.css';
 
 
 // export anonymous object from this module so it can be accessed by others when imported
@@ -61,7 +63,7 @@ export default {
     // components (HTML, CSS, and JS) used by this app
     components: {
         // imported components to use in HTML template
-        Quiz
+        NewBookForm
     },
     // functions you want to be called from HTML code
     methods: {
@@ -72,16 +74,16 @@ export default {
     }
 }
 </script>
-<!-- 
-<style lang="scss" scoped>
+
+<style>
 /* load global variable definitions so colors can be managed in a single place if needed */
-@import "./css/quiz.css";
 
 
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     color: $formColor;
     margin-top: 20px;
+    color: #FF5733;
 }
 
 .table {

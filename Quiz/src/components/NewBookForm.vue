@@ -16,7 +16,7 @@
                 </button>
         </div>
 
-        <div class="panel-body" v-if="!finished && !noquiz">
+        <div class="panel-body">
             <p> Your score: {{ yourscore }} </p>
         </div>
 </div>

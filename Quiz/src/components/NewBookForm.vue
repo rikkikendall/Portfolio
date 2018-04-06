@@ -1,14 +1,46 @@
+<style scoped>
+
+  .holder {
+    background: #fff;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  ul li {
+    padding: 20px;
+    font-size: 1.3em;
+    background-color: #E0EDF4;
+    border-left: 5px solid #3EB3F6;
+    margin-bottom: 2px;
+    color: #3E5252;
+  }
+
+  p {
+    text-align:center;
+    padding: 30px 0;
+    color: gray;
+  }
+
+  .container {
+    box-shadow: 0px 0px 40px lightgray;
+  }
+
+</style>
+
 <template>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Tackle These Questions</h3>
     </div>
-            <h1 v-if="!finished" class="quiztitle">{{ quiz }}</h1>
-        <div class="panel-heading" v-if="!finished && !noquiz">
+        <h1 v-if="!finished" class="quiztitle">{{ quiz }}</h1>
+        <div class="panel-body" v-if="!finished && !noquiz">
             <h3 class="panel-title">{{ questions[whichQ].question }} </h3>
                 <div class="form-group" v-for="(choice, index) in questions[whichQ].choices" @click="checkAnswer(check, questions[whichQ].correctAnswer)">
                     <input type="radio" name="youpicked" v-on:click="check=index">
-                    &nbsp;&nbsp;&nbsp;
                     {{ questions[whichQ].choices[index] }}
                 </div>
                 <button class="next" v-if="whichQ!=questions.length-1"  v-on:click="whichQ++">

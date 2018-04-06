@@ -1,3 +1,49 @@
+<style>
+/* load global variable definitions so colors can be managed in a single place if needed */
+
+
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    color: $formColor;
+    margin-top: 15px;
+    color: #FF5733;
+}
+
+.table {
+    color: $tableColor;
+}
+
+  .holder {
+    background: #fff;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  ul li {
+    padding: 20px;
+    font-size: 1.3em;
+    background-color: #E0EDF4;
+    border-left: 5px solid #3EB3F6;
+    margin-bottom: 2px;
+    color: #3E5252;
+  }
+
+  p {
+    text-align:center;
+    padding: 30px 0;
+    color: gray;
+  }
+
+  .container {
+    box-shadow: 0px 0px 40px lightgray;
+  }
+
+</style>
+
 <template>
 
 <div id="app" class="container">
@@ -12,29 +58,24 @@
 
     <div class="page-header">
         <div class="row">
-            <button class="duke_questions" v-on:click="index=0; Show=false">
-                Duke Questions
+            <button class="duke_qs" v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}" v-on:click="index=0; Show=false" >
+                Duke Challenge
             </button>
 <!--             <NewBookForm v-if="DukeQuiz" :quiz=""> </NewBookForm> -->
-            <button class="math_questions" v-on:click="index=1; Show=false">
-                Math Questions
+            <button v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}"  v-on:click="index=1; Show=false">
+                Math Challenge
             </button>
-            <button class="math_questions" v-on:click="index=2; Show=false">
+            <button v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}" v-on:click="index=2; Show=false">
                 Rikki's Select Trivia
             </button>
         </div>
     </div>
-    <div class="page-header" v-if="!Show" v-bind:style="{ color: '#3B3EF7', fontSize: '20px', borderColor: '#5BC0EB'}">
+    <div class="page-header" v-if="!Show" v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}">
 
-        <NewBookForm   :quiz="AllQs[index].NewBookForm"
-                :questions="AllQs[index].questions"
-                :choices="AllQs[index].questions[qindex].choices"
-                :index="index"
-                :qindex="qindex"
-                :Show="Show">
+        <NewBookForm   :quiz="AllQs[index].NewBookForm" :questions="AllQs[index].questions" :choices="AllQs[index].questions[qindex].choices" :index="index" :qindex="qindex" :Show="Show">
         </NewBookForm>
 <!--                 <NewBookForm
-                :questions="[index].questions">
+                :duke_qs="[index].duke_qs">
         </NewBookForm> -->
         <p> YES! 
         </p>
@@ -44,7 +85,7 @@
 <script>
 
 import NewBookForm from './components/NewBookForm.vue'
-import questions from './data/duke_questions.json'
+import duke_qs from './data/duke_questions.json'
 // import Style from './css/NewBookForm.css';
 
 
@@ -54,10 +95,11 @@ export default {
     // NOTE in a component, data must be a function that returns a NEW version of the values
     data () {
         return {
-            AllQs: questions,
+            AllQs: duke_qs,
             index: 0,
             qindex: 0,
             Show: true,
+            DukeQuiz: false,
         }
     },
     // components (HTML, CSS, and JS) used by this app
@@ -75,18 +117,4 @@ export default {
 }
 </script>
 
-<style>
-/* load global variable definitions so colors can be managed in a single place if needed */
 
-
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    color: $formColor;
-    margin-top: 20px;
-    color: #FF5733;
-}
-
-.table {
-    color: $tableColor;
-}
-</style>

@@ -19,7 +19,6 @@
                 Math Questions
             </button>
         </div>
-        <br><br>
     </div>
     <div class="page-header" v-if="!noquiz">
         <Quiz   :quiz="quizQ[index].quiz"
@@ -64,6 +63,10 @@ export default {
     },
     // functions you want to be called from HTML code
     methods: {
+        // var css = document.createElement("style");
+        // css.type = "text/css";
+        // css.innerHTML = "strong { color: red }";
+        // document.body.appendChild(css);
     }
 }
 </script>

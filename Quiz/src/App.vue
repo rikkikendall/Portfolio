@@ -12,8 +12,11 @@
 
     <div class="page-header">
         <div class="row">
-            <button class="questions col-xs-4 col-sm-4 col-md-4 col-lg-4" v-on:click="index=0; noquiz=false">
-                Questions
+            <button class="duke_questions" v-on:click="index=0; noquiz=false">
+                Duke Questions
+            </button>
+            <button class="math_questions" v-on:click="index=1; noquiz=false">
+                Math Questions
             </button>
         </div>
         <br><br>

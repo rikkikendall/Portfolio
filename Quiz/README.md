@@ -1,4 +1,10 @@
-<<<<<<< HEAD
+
+
+Yuuta Rikki Kendall (yrk3) 
+Hours: 10
+Help from Kora and online turtorials. 
+Was an interesting assignment for sure. 
+
 # quiz
 
 > A Vue.js project

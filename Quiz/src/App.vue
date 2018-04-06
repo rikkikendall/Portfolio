@@ -12,21 +12,24 @@
 
     <div class="page-header">
         <div class="row">
-            <button class="duke_questions" v-on:click="index=0; noquiz=false">
+            <button class="duke_questions" v-on:click="index=0; Show=false">
                 Duke Questions
             </button>
-            <button class="math_questions" v-on:click="index=1; noquiz=false">
+            <button class="math_questions" v-on:click="index=1; Show=false">
                 Math Questions
+            </button>
+            <button class="math_questions" v-on:click="index=2; Show=false">
+                Rikki's Select Trivia
             </button>
         </div>
     </div>
-    <div class="page-header" v-if="!noquiz">
-        <Quiz   :quiz="quizQ[index].quiz"
-                :questions="quizQ[index].questions"
-                :choices="quizQ[index].questions[qindex].choices"
+    <div class="page-header" v-if="!Show">
+        <Quiz   :quiz="AllQs[index].quiz"
+                :questions="AllQs[index].questions"
+                :choices="AllQs[index].questions[qindex].choices"
                 :index="index"
                 :qindex="qindex"
-                :noquiz="noquiz">
+                :Show="Show">
         </Quiz>
 <!--                 <Quiz
                 :questions="[index].questions">
@@ -49,11 +52,10 @@ export default {
     // NOTE in a component, data must be a function that returns a NEW version of the values
     data () {
         return {
-            quizQ: questions,
+            AllQs: questions,
             index: 0,
             qindex: 0,
-            noquiz: true,
-            start: false,
+            Show: true,
         }
     },
     // components (HTML, CSS, and JS) used by this app

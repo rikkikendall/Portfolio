@@ -58,24 +58,24 @@
 
     <div class="page-header">
         <div class="row">
-            <button class="duke_qs" v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}" v-on:click="index=0; Show=false" >
+            <button class="duke_qs" v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}" v-on:click="ref=0; Show=false" >
                 Duke Challenge
             </button>
 <!--             <NewBookForm v-if="DukeQuiz" :quiz=""> </NewBookForm> -->
-            <button v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}"  v-on:click="index=1; Show=false">
+            <button v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}"  v-on:click="ref=1; Show=false">
                 Math Challenge
             </button>
-            <button v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}" v-on:click="index=2; Show=false">
+            <button v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}" v-on:click="ref=2; Show=false">
                 Rikki's Select Trivia
             </button>
         </div>
     </div>
     <div class="page-header" v-if="!Show" v-bind:style="{ color: '#3B3EF7', fontSize: '20px'}">
 
-        <NewBookForm   :quiz="AllQs[index].NewBookForm" :questions="AllQs[index].questions" :choices="AllQs[index].questions[qindex].choices" :index="index" :qindex="qindex" :Show="Show">
+        <NewBookForm   :quiz="AllQs[ref].NewBookForm" :questions="AllQs[ref].questions" :choices="AllQs[ref].questions[questionref].choices" :ref="ref" :questionref="questionref" :Show="Show">
         </NewBookForm>
 <!--                 <NewBookForm
-                :duke_qs="[index].duke_qs">
+                :duke_qs="[ref].duke_qs">
         </NewBookForm> -->
         <p> YES! 
         </p>
@@ -96,8 +96,8 @@ export default {
     data () {
         return {
             AllQs: duke_qs,
-            index: 0,
-            qindex: 0,
+            ref: 0,
+            questionref: 0,
             Show: true,
             DukeQuiz: false,
         }

@@ -1,5 +1,13 @@
 # quizz
 
+
+Name: Yuuta Rikki Kendall (yrk3)
+Started: 4/2/2018 (Had an extension)
+Finished: 4/5/2018
+Hours: 10
+Resources: Piazza, Kora, and Online
+Overall a fun assignment. I liked it a lot, couldn't really figure out the CSS and importing it but hopefully its all good. 
+
 > A Vue.js project
 
 ## Build Setup

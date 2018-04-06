@@ -5,7 +5,11 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
+<<<<<<< HEAD
+    publicPath: '/dist/',
+=======
     publicPath: 'dist/',
+>>>>>>> 480d1363ad68818eddc7f07ba29a2dcb15a3e568
     filename: 'build.js'
   },
   module: {
@@ -16,6 +20,9 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
+<<<<<<< HEAD
+      },      {
+=======
       },
       {
         test: /\.scss$/,
@@ -34,10 +41,13 @@ module.exports = {
         ],
       },
       {
+>>>>>>> 480d1363ad68818eddc7f07ba29a2dcb15a3e568
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
           loaders: {
+<<<<<<< HEAD
+=======
             // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
             // the "scss" and "sass" values for the lang attribute to the right configs here.
             // other preprocessors should work out of the box, no loader config like this necessary.
@@ -51,6 +61,7 @@ module.exports = {
               'css-loader',
               'sass-loader?indentedSyntax'
             ]
+>>>>>>> 480d1363ad68818eddc7f07ba29a2dcb15a3e568
           }
           // other vue-loader options go here
         }
@@ -66,6 +77,8 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+<<<<<<< HEAD
+=======
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
@@ -73,6 +86,7 @@ module.exports = {
         options: {
           name: '/fonts/[name].[ext]'
         }
+>>>>>>> 480d1363ad68818eddc7f07ba29a2dcb15a3e568
       }
     ]
   },

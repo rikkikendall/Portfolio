@@ -40,7 +40,7 @@
             <h3 class="panel-title">{{ questions[whichQ].question }} </h3>
                 <div class="radiobuttons" v-for="(choice, ref) in questions[whichQ].choices" v-on:click="Areyoucorrect(check, questions[whichQ].correctAnswer)">
 
-                        <button>
+                        <button name="youpicked" v-on:click="check=ref">
 <!--                     <input type="radio" name="youpicked" v-on:click="check=ref"> -->
                     {{ questions[whichQ].choices[ref] }}
                 </button>

@@ -1,0 +1,45 @@
+            body {
+                font-family: Open Sans;
+                margin: 0px;
+                color: white;
+                background-color: black;
+            }
+          svg {
+              position: relative;
+              left: calc(50% - 400px);
+              color: white;
+              background-color: black;
+          }
+          #container {
+}
+          #cont{
+              position: relative;
+              width: 50%;
+              margin: auto;
+              padding: 0 25px 40px 10px;
+              font-weight: bold;
+/*              top: calc( 50% - 700px);*/
+              top: 5px;
+/*              background-color: #1E90FF;
+              border: 4px solid #B0E0E6;
+              border-radius: 5px;*/
+              box-shadow: #888;
+          }
+          .a{
+              font-size: 1em;
+              fill: yellow;
+          }
+          .b{
+            font-size: 3em;
+            fill:blue;
+          }
+          .c{
+            font-size:15em;
+            fill:red;
+            stroke:white;
+            stroke-width:10px;
+          }
+
+          .slider {
+            width: 100%; /* Width of the outside container */
+          }

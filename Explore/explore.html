@@ -6,55 +6,58 @@
         </title>
         <script src="d3.min.js"></script>
         <script src="https://omid.al/Mova-Viz/MovaViz-v0.1.1.js"></script>
-        
-        <style>
-            * {
-                box-sizing: border-box
-            }
-            body {
-                margin: 0px;
-                color: aqua;
-            }
-          svg {
-            position: relative;
-            left: calc(50% - 400px);
-              color: aqua;
-              
-          }
-          #cont{
-              position: relative;
-              top: calc( 50% - 400px);
-              color: aqua;
-          }
-    .a{
-        font-size: 1em;
-        fill: green;
-    }
-    .b{
-        font-size: 2em;
-        fill:blue;
-    }
-    .c{
-        font-size:15em;
-        fill:red;
-        stroke:black;
-        stroke-width:10px;
-    }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-<!--
-    <div class="text">
-        <input class="input" id="text" placeholder="InputText"><button class="button" @click="run()"> Create! </button>
+      <svg width="500" height="250">
+        <text class="a" x="0" y="125"> Rikki Explores! </text>
+        <text class="b" x="25" y="225"> D3 Dynamic Art </text>
+        <text class="c" x="115" y="185"> Art </text>
+     </svg>
+      <svg width="300" height="300">
+          <polygon fill="yellow" stroke="blue" stroke-width="5"
+            points="50,300
+                   150,100
+                   250,300" />
+        </svg>
+     <p> </p>
+      <svg width="500" height="50">
+          <polyline fill="none" stroke="blue" stroke-width="2"
+              points="05,30
+                      15,30
+                      15,20
+                      25,20
+                      25,10
+                      35,10
+                      70,20
+                      100,40
+                      700, 0" />
+      </svg>
+      <div id="Circles">
+      <svg width="700" height="200">
+        <circle id = "Circles" cx="30" cy="50" r="30" fill="blue"></circle>
+        <circle id = "Circles" cx="100" cy="50" r="30" fill="red"></circle>
+        <circle id = "Circles" cx="170" cy="50" r="30" fill="green"></circle>
+        <circle id = "Circles" cx="240" cy="50" r="30" fill="yellow"></circle>
+                <circle id = "Circles" cx="30" cy="50" r="30" fill="blue"></circle>
+        <circle id = "Circles" cx="300" cy="50" r="30" fill="red"></circle>
+        <circle id = "Circles" cx="470" cy="50" r="30" fill="green"></circle>
+        <circle id = "Circles" cx="640" cy="50" r="30" fill="yellow"></circle>
+      </svg>
+  </div>
+     <p> SLIDER BARS BELOW CONTROL IMAGE: </p>
+
+    <input id="slider" type="range" min="0.01" max="10" step="0.05" value="0.1"/>
+    <div id="sliderDiv"> Line Opacity </div>
+
+    <input id="slider2" type="range" min="0.01" max="10" step="0.05" value="0.1"/>
+    <div id="sliderDiv2"> Line Thickness </div>
+
+    <div id="cont"></div> 
+    <script src="art.js"></script>
+    <script>run()</script>
+
     </div>
--->
-    <svg width="500" height="225">
-        <text class="a" x="0" y="120"> Rikki Explores! </text>
-        <text class="b" x="20" y="200"> D3 Dynamic Art </text>
-        <text class="c" x="100" y="170"> Art </text>
-    </svg>
-        <div id="cont"></div> 
-            <script src="art.js"></script>
-        <script>run()</script>
+
     </body>
 </html>

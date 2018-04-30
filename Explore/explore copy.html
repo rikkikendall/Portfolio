@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <title> RIKKI EXPLORES </title>
+    <style>
+
+    .a{
+        font-size: 1em;
+        fill: green;
+    }
+    .b{
+        font-size: 2em;
+        fill:blue;
+    }
+    .c{
+        font-size:20em;
+        fill:red;
+        stroke:black;
+        stroke-width:10px;
+    }
+    </style>
+</head>
+<script> 
+    // Variables
+var skeleton; // Storing the skeleton data
+var positions;  // Storing the joint positions
+var positions_scaled;  // Storing the scaled joint positions
+var figureScale = 2;  // The scaling factor for our visualizations
+var h = 200;  // The height of the visualization
+var w = 400;  // The width of the visualization
+    
+$.getJSON("usa-states.json", function(json) {
+    skeleton = json;
+    $.getJSON("usa-states.json", function(json) {
+        positions = json;
+        draw();
+    });
+});
+    
+var parent = d3.select("body").select("#container");
+
+var svg = parent.append("svg")
+                .attr("width", w)
+                .attr("height", h)
+                .attr("overflow","scroll")
+                .style("display","inline-block");
+    
+    // Scale the data
+positions_scaled = positions.map(function(f, j) {
+    return f.map(function(d, i) {
+      return {
+        x: (d.x + 50) * figureScale,
+        y: -1 * d.y * figureScale + h - 10,
+        z: d.z * figureScale
+      };
+    });
+  });
+    // Choose the frame to draw
+index = 60;  // the index of the frame
+currentFrame = positions_scaled[index];
+    
+headJoint = 7;
+
+svg.selectAll("circle.joints" + index)
+.data(currentFrame)
+.enter()
+.append("circle")
+.attr("cx", function(d) {
+    return d.x;
+}).attr("cy", function(d) {
+    return d.y;
+}).attr("r", function(d, i) {
+    if (i == headJoint )
+        return 4;
+    else
+        return 2;
+}).attr("fill", function(d, i) {
+    return '#555555';
+});
+    
+function draw() {
+
+}
+</script>
+<body>
+    <svg width="500" height="525">
+        <text class="a" x="0" y="120"> Rikki Explores! </text>
+        <text class="b" x="20" y="200"> What UP! </text>
+        <text class="c" x="100" y="170"> Art </text>
+    </svg>
+    <div id="container">
+            
+    </div>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html data-n-head="" data-n-head-ssr>
+  <head>
+    <meta data-n-head="true" charset="utf-8"><meta data-n-head="true" content="width=device-width,initial-scale=1" name="viewport"><meta data-n-head="true" content="Nuxt.js project" name="description" data-hid="description"><title data-n-head="true">oda-finalproject</title><link href="/favicon.ico" rel="icon" data-n-head="true" type="image/x-icon"><script src="https://unpkg.com/vue-scrollto" data-n-head="true"></script><link href="/assets/manifest.1ba66eda5e521d4a4572.js" rel="preload" as="script"><link href="/assets/vendor.a11cf0622182841ba09b.js" rel="preload" as="script"><link href="/assets/app.1b3768c37b5d4c52c24e.js" rel="preload" as="script"><link href="/assets/layouts/default.ac39a8bd22bb91fe8656.js" rel="preload" as="script"><link href="/assets/pages/index.7a0bbcbaaed5ab077815.js" rel="preload" as="script"><link href="/assets/pages/projects.a8e505a6e26a5a2ddb03.js" rel="prefetch"><link href="/assets/pages/about.ddd2ab3a4810865a3514.js" rel="prefetch"><style data-vue-ssr-id="3fe4b758:0">.nuxt-progress{position:fixed;top:0;left:0;right:0;height:2px;width:0;-webkit-transition:width .2s,opacity .4s;transition:width .2s,opacity .4s;opacity:1;background-color:#efc14e;z-index:999999}</style><style data-vue-ssr-id="f679a1e4:0">html{font-family:Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:16px;word-spacing:1px;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}*,:after,:before,html{-webkit-box-sizing:border-box;box-sizing:border-box}*,:after,:before{margin:0}.button--green{display:inline-block;border-radius:4px;border:1px solid #3b8070;color:#3b8070;text-decoration:none;padding:10px 30px}.button--green:hover{color:#fff;background-color:#3b8070}.button--grey{display:inline-block;border-radius:4px;border:1px solid #35495e;color:#35495e;text-decoration:none;padding:10px 30px;margin-left:15px}.button--grey:hover{color:#fff;background-color:#35495e}</style><style data-vue-ssr-id="1b6d2894:0">.container{min-height:100vh;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;text-align:center}.title{font-family:Quicksand,Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;display:block;font-weight:300;font-size:100px;color:#35495e;letter-spacing:1px}.subtitle{font-weight:300;font-size:42px;color:#526488;word-spacing:5px;padding-bottom:15px}.links{padding-top:15px}</style>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+      <style>
+          /*NAVBAR */
+        .bs-docs-sidebar .nav > li > a {
+            display: block;
+            padding: 4px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            background-color: darkblue;
+        }
+        .bs-docs-sidebar .nav > li > a:hover,
+        .bs-docs-sidebar .nav > li > a:focus {
+            padding-left: 19px;
+            color: #A1283B;
+            text-decoration: none;
+            background-color: darkblue;
+            border-left: 1px solid #A1283B;
+        }
+        .bs-docs-sidebar .nav > .active > a,
+        .bs-docs-sidebar .nav > .active:hover > a,
+        .bs-docs-sidebar .nav > .active:focus > a {
+            padding-left: 18px;
+            font-weight: bold;
+            color: #A1283B;
+            background-color: darkblue;
+            border-left: 2px solid #A1283B;
+        } 
+            nav {
+          float: right;
+          width: 60%;
+          @include small {
+            width: 100%;
+              background-color: darkblue;
+          }
+
+          ul {
+            list-style: none;
+            overflow: hidden;
+            text-align: right;
+            float: right;
+            @include small {
+              padding-top: 10px;
+              margin-bottom: 22px;
+              float: left;
+              text-align: center;
+              width: 100%;
+                background-color: darkblue;
+            }
+
+            li {
+              display: inline-block;
+              margin-left: 35px;
+              line-height: 1.5;
+              @include small {
+                width: 100%;
+                padding: 7px 0;
+                margin: 0;
+              }
+            }
+            a {
+              color: #888888;
+              text-transform: uppercase;
+              font-size: 12px;
+            }
+          }
+        }
+        .footer {
+/*
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+*/
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+      </style>
+  </head>
+  
+<body>
+    <div id="header" class="nav" style="">
+        <div class="nav"><div class="col-md-12"><h1 class="title"> ODA - Otros Dreams in Action </h1>
+                <p></p>
+                <ul class="nav nav-tabs" style="background-color: darkblue">
+                    <li class="nav-item">
+                    <a class="nav-link" href="./">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="./">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Why</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Projects</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">FAQ</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">Donate</a>
+                  </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        var url = 'https://newsapi.org/v2/everything?' +
+          'q=Apple&' +
+          'from=2018-04-27&' +
+          'sortBy=popularity&' +
+          'apiKey=f14ab6c5dfa247989f687ef218d16bbb';
+
+        var req = new Request(url);
+
+        fetch(req)
+        .then(function(response) {
+            console.log(response.json());
+        })
+    </script>
+    <div id="section">
+        <div class="col-lg-6">
+        <h3> OTROS DREAMS EN ACCIÓN IS A BINATIONAL GRASSROOTS COMMUNITY DEDICATED TO MUTUAL SUPPORT AND POLITICAL ACTION BY AND FOR THOSE WHO LIVED IN THE UNITED STATES AND ARE NOW IN MEXICO DUE TO DEPORTATION, THREAT OF DEPORTATION, THE DEPORTATION OF A FAMILY MEMBER, AND/OR OTHER OBSTACLES.</h3>
+
+
+        <p> 
+        What nourishes ODA is the value of being able to make a difference in a person’s life. It does not matter how or when we were going to grow in size, but rather how many seeds we can plant by showing up for our community of returning and deported immigrants. We know that by staying true to that simple principle, we will grow and evolve as a sustainable and powerful community.
+
+        Otros Dreams en Acción is significant in three important ways. First, ODA advocates for the claim to legal rights and responsibilities—including but not limited to legal international mobility—as members of the United States national community from our current location, al otro lado, in towns and cities across Mexico. Second, ODA advocates for integration and transformation in Mexico. And last but not least, the members of ODA support each other, independent of what someone may have done in the past, the circumstances under which someone returned to Mexico, and the diversity of immigration status and mobility within our community. 
+        </p>
+    </div>
+</div>
+ 
+<div class="footer">
+<footer class="footer" id="footer" tabindex="0">
+        <div class="wrapper">
+                <div class="col-lg-6">
+                    <div class="dropdown">
+                        <label class="dropdown_footer" for="footer_information">Information for</label>
+                        <select style="width: 100%" id="footer_information" class="" title="Information for" data-placeholder="">
+                            <option value="">Information for</option>
+                                <option value="">Option 1</option>
+                            
+                                <option value="">Refugees, asylum seekers and their families</option>
+                            
+                                <option value="">Employ migrants</option>
+                            
+                        </select>
+                    </div>
+                </div>
+            </div>
+    <div class="footer_primary">
+        <div class="wrapper">
+            <div class="col-lg-6">
+                <div class="row">
+	                <div class="footer_primary_col footer">
+                        <p class="footer_list__header">
+	                    	<a href=""> How Can We Assist You? </a>
+                            <span class="footer_list_link__slide_trigger" data-target=""></span>
+                        </p>
+                        <ul class="footer_list" id="assist-migrants-and-students">
+	                    	<li><a href=""><span>Advise Dreamers</span></a></li>
+                      <li><a href=""><span>Assist Students</span></a></li>
+                      <li><a href=""><span>Assist Those Deported</span></a></li>
+                      <li><a href=""><span>Other industry partners</span></a></li>
+                      <li><a href=""><span>Embassies and Consulates</span></a></li>
+	                    </ul>
+	                </div>
+
+<!--
+	                <div class="footer_primary_col">
+                        <h4 class="footer_list__header">
+	                    	<a href="">Contact Us</a>
+                            <span class="footer_list"></span>
+                        </h4>
+	                    <ul class="footer_list" id="assist-migrants-and-students">
+	                    	<li><a href=""><span>Facebook</span></a></li>
+                      <li><a href=""><span>Twitter</span></a></li>
+                      <li><a href=""><span>Email</span></a></li>
+                      <li><a href=""><span>Privacy</span></a></li>
+                      <li><a href=""><span>Copyright</span></a></li>
+	                    </ul>
+	                </div>
+-->
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="footer_secondary">
+        <div class="wrapper wrapper__medium">
+            <div class="row ">
+                <div class="col-md-6">
+                    <a href="" class="LOGO">ODA</a> 
+                </div>
+                <div class="col-md-6">
+<p style="text-align:center">
+<!--Facebook icon-->
+<a href="http://facebook.com/flashissue" target="_blank"><img alt="" src="FBicon.png" /> </a>&nbsp; &nbsp; &nbsp;
+<!--Google+ icon-->
+<a href="http://plus.google.com" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/gHd2XoyiQbKBqljm7bzg_63j3xtd7SX28TTMeOSfZ_google.png" /> </a>&nbsp; &nbsp;&nbsp;
+<!--Twitter icon-->
+<a href="http://twitter.com/flashissue" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/MsIJsIsDT9WLAxxH4aIK_OgdHV3vxSR2737LGd8cq_facebook.png" /> </a>&nbsp; &nbsp;&nbsp;
+<!--Linkedin icon-->
+<a href="http://pinterest.com" target="_blank"><img alt="" src="https://s3.amazonaws.com/flashissue/b8Xt2lN8TCKhilmoHXGW_TCjqF6FgS86WoWzUOQCh_pinterest.png" /> </a>
+</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer_tertiary">
+        <div class="wrapper">
+            <div class="row">
+<!--
+                <div class="col-md-6">
+                </div>
+-->
+                <div class="col-md-6">
+                    <p class="f_tertiary_text f_tertiary_text__c">© 2018 Sierra, Rikki, Charlotte INC</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </footer>
+<p class="date">Information updated on 2018/04/39 EST</p>
+    </div>
+</body>
+</html>

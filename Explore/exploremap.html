@@ -1,0 +1,52 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Map</title>
+<!--  <link rel="stylesheet" href="style.css">-->
+    
+<meta charset="utf-8">
+
+<script src="https://d3plus.org/js/d3.js"></script>
+
+<script src="https://d3plus.org/js/topojson.js"></script>
+
+<script src="https://d3plus.org/js/d3plus.js"></script>
+</head>
+
+<body>
+    
+<h1>Top Ten Countries with the most Billionares</h1>
+
+<div id="data"></div>
+
+<script>
+  var sample_data = [
+    {"value": 585, "country": "nausa", "name": "United States", "richest individual": "Jeff Bezos"},
+    {"value": 476, "country": "aschn", "name": "China", "richest individual": "Ma Huateng"},
+      {"value": 131, "country": "asind", "name": "India", "richest individual": "Mukesh Ambani"},
+    {"value": 114, "country": "eugrc", "name": "Germany", "richest individual": "Beate Heister"},
+    {"value": 96, "country": "asrus", "name": "Russia", "richest individual": "Leonid Mikhelson"},
+      {"value": 67, "country": "ashkg", "name": "Hong Kong", "richest individual": "Li Ka-shing"},
+      {"value": 54, "country": "euukr", "name": "United Kingdom", "richest individual": "Hinduja family"},
+      {"value": 43, "country": "sabra", "name": "Brazil", "richest individual": "Jorge Paulo Lemann"},
+      {"value": 42, "country": "euita", "name": "Italy", "richest individual": "Maria Franca Fissolo"},
+      {"value": 39, "country": "nacan", "name": "Canada", "richest individual": "David Thomson"}
+  ]
+  var visualization = d3plus.viz()
+    .container("#data")       
+    .data(sample_data)      
+    .coords("https://d3plus.org/topojson/countries.json") 
+    .type("geo_map")  
+    .id("country")     
+    .text("richest individual")      
+    .color("value")
+    .tooltip("value")
+    .tooltip("name")
+    .draw() 
+</script>
+
+</body>
+</html>

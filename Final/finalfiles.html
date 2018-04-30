@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Rikki Kendall">
+
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!-- libraries neded for this page -->
+<!--     <link rel="stylesheet" href="styles.css"> -->
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <script src="d3.js"></script>
+    <script type='text/javascript' src='d3.min.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"><script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <title> Art </title>
+    <style>
+        /*NAVBAR */
+.bs-docs-sidebar .nav > li > a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+    background-color: darkblue;
+}
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: darkblue;
+    border-left: 1px solid #A1283B;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: darkblue;
+    border-left: 2px solid #A1283B;
+} 
+    nav {
+  float: right;
+  width: 60%;
+  @include small {
+    width: 100%;
+      background-color: darkblue;
+  }
+
+  ul {
+    list-style: none;
+    overflow: hidden;
+    text-align: right;
+    float: right;
+    @include small {
+      padding-top: 10px;
+      margin-bottom: 22px;
+      float: left;
+      text-align: center;
+      width: 100%;
+        background-color: darkblue;
+    }
+
+    li {
+      display: inline-block;
+      margin-left: 35px;
+      line-height: 1.5;
+      @include small {
+        width: 100%;
+        padding: 7px 0;
+        margin: 0;
+      }
+    }
+    a {
+      color: #888888;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+  }
+}
+</style>
+</head>
+<script> 
+    // Sticky Header
+$(window).scroll(function() {
+
+    if ($(window).scrollTop() > 100) {
+        $('.main_h').addClass('sticky');
+    } else {
+        $('.main_h').removeClass('sticky');
+    }
+});
+
+// Mobile Navigation
+$('.mobile-toggle').click(function() {
+    if ($('.main_h').hasClass('open-nav')) {
+        $('.main_h').removeClass('open-nav');
+    } else {
+        $('.main_h').addClass('open-nav');
+    }
+});
+
+$('.main_h li a').click(function() {
+    if ($('.main_h').hasClass('open-nav')) {
+        $('.navigation').removeClass('open-nav');
+        $('.main_h').removeClass('open-nav');
+    }
+});
+
+// Navigation Scroll - ljepo radi materem
+$('nav a').click(function(event) {
+    var id = $(this).attr("href");
+    var offset = 70;
+    var target = $(id).offset().top - offset;
+    $('html, body').animate({
+        scrollTop: target
+    }, 500);
+    event.preventDefault();
+});
+    
+</script>
+    
+<div id="header" class="nav" style="">
+<div class="nav"><div class="col-md-12"><h1 class="title"> ODA - Otros Dreams in Action </h1>
+<p></p>
+
+<ul class="nav nav-tabs" style="background-color: darkblue">
+    <li class="nav-item">
+    <a class="nav-link active" href="./">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./">About</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="">Why</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="">Projects</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="">FAQ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="">Donate</a>
+  </li>
+</ul>
+    
+<template>
+<div id="nav" class="nav">
+    <v-toolbar>
+    <v-toolbar-side-icon @click.stop="drawer = !drawer" dark></v-toolbar-side-icon>
+    <v-navigation-drawer
+      temporary
+      v-model="drawer"
+      :mini-variant="mini"
+      light
+      absolute
+    >
+      <v-list dense>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>home</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Home</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>contact_mail</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Contact</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+      <v-toolbar-title>ODA</v-toolbar-title>
+      <v-spacer></v-spacer>
+      
+      <v-toolbar-items v-if="$store.state.lang ==='eng'" class="hidden-sm-and-down">
+        <v-btn to="/" flat>Home</v-btn>
+        <v-btn to="/about" flat>About</v-btn>
+        <v-btn to="/projects" flat>Projects</v-btn>
+        <v-btn to="/faq" flat>FAQ</v-btn>
+        <v-btn to="/donate" color="blue">Donate</v-btn>
+        <v-btn v-if="$store.state.role ==='user' || $store.state.role ==='admin'" @click="signOut" >Sign Out</v-btn>
+      </v-toolbar-items>
+      <v-toolbar-items v-else>
+        <v-btn to="/" flat>Inicio</v-btn>
+        <v-btn to="/about" flat>Nosotros</v-btn>
+        <v-btn to="/projects" flat>Proyectos</v-btn>
+        <v-btn to="/faq" flat>Preguntas Frecuentes</v-btn>
+        <v-btn to="/donate" color="blue">Donar</v-btn>
+        <v-btn v-if="$store.state.role ==='user' || $store.state.role ==='admin'" @click="signOut" >Salir</v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+    <v-footer color="indigo" app inset>
+      <span class="white--text">&copy; 2017</span>
+    </v-footer>
+    </div>
+</template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+    name: 'site-header',
+    data() {
+        return {
+              drawer: false  
+        }
+    }
+}
+</script>
+
+
+<template>
+<div id="nav" class="nav">
+    <v-footer color="indigo" app inset>
+      <span class="white--text">&copy; Sierra, Rikki, Charlotte 2017</span>
+    </v-footer>
+    </div>
+</template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+    name: 'site-footer',
+    data() {
+        return {
+        }
+    }
+}
+</script>
+
+<template>
+<v-app id="inspire">
+    <site-header></site-header>
+    <lang-toggle></lang-toggle>
+    <v-tabs fixed-tabs>
+        <v-tab ripple>
+            About
+        </v-tab>
+        <v-tab ripple>
+            Media
+        </v-tab>
+    <v-tab-item>
+        <v-card flat>
+            <v-card-text>Contents for Item 1 go here</v-card-text>
+            <v-card-text>
+                <about-carousel :people="thePeople"></about-carousel>
+            </v-card-text>
+        </v-card>
+    </v-tab-item>
+    <v-tab-item>
+        <v-card flat>
+            <v-card-text>Contents for Item 2 go here</v-card-text>
+        </v-card>
+    </v-tab-item>  
+    </v-tabs>
+    <site-footer></site-footer>
+</v-app>
+</template>
+
+<script>
+import SiteHeader from '~/components/SiteHeader'
+import SiteFooter from '~/components/SiteFooter'
+import LangToggle from '~/components/LangToggle'
+import thePeople from '~/static/personData.json'
+import AboutCarousel from '~/components/AboutCarousel'
+import { mapState } from 'vuex'
+
+export default {
+  components: {
+      SiteHeader,
+      LangToggle,
+      AboutCarousel,
+      SiteFooter
+  },
+
+

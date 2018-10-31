@@ -1,5 +1,5 @@
 # Portfolio Yuuta Rikki Kendall 
-Major: Computer Science (B.S.)
+Major: Computer Science (B.S.) < /br>
 Minor: Asian Middle Eastern Studies
 Interest: Web Development
 
